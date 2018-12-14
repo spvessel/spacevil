@@ -104,7 +104,7 @@ In this tutorial, you will learn how to create a simple cross-platform applicati
       {
         public override void InitWindow()
         {
-          WindowLayout Handler = new WindowLayout(this, nameof(MainWindow), nameof(MainWindow), 
+          WindowLayout Handler = new WindowLayout(nameof(MainWindow), nameof(MainWindow), 
                     800, 600, false);
           SetHandler(Handler);
           Handler.SetMinSize(400, 300);
@@ -154,7 +154,7 @@ In this tutorial, you will learn how to create a simple cross-platform applicati
     class MainWindow extends ActiveWindow {
       @Override
       public void initWindow() {
-        WindowLayout Handler = new WindowLayout(this, this.getClass().getSimpleName(), "App",
+        WindowLayout Handler = new WindowLayout(this.getClass().getSimpleName(), "App",
                      360, 500, false);
         setHandler(Handler);
         Handler.setMinSize(350, 500);
