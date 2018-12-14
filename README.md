@@ -240,4 +240,4 @@ You can assign unlimited count of action to one event of an item.
 
 ### License
 
-Examples is licensed under the MIT License * see the LICENSE.md file for details.
+Examples is licensed under the MIT License. See the LICENSE.md file for details.
