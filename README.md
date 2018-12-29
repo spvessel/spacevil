@@ -9,8 +9,8 @@ In this tutorial, you will learn how to create a simple cross-platform applicati
 
 ### Step 1: Implementing SpaceVIL into you Project
 
-**C# / .NET Standart / Visual Studio**
-* [Download](http://spvessel.com/index.html) SpaceVIL for **.NET Standart**
+**C# / .NET Standard / Visual Studio**
+* [Download](http://spvessel.com/index.html) SpaceVIL for **.NET Standard**
 * [Download](https://www.glfw.org) **glfw** and copy next to the executable. 
 * Add Reference to **SpaceVIL.dll**
 * Check the framework by adding the line: 
