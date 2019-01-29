@@ -234,8 +234,8 @@ You can assign unlimited count of action to one event of an item.
 
 
 ### Authors
-* **Roman Sedaykin**
-* **Valeriya Sedaykina**
+* **Roman Sedaikin**
+* **Valeriia Sedaikina**
 
 
 ### License
