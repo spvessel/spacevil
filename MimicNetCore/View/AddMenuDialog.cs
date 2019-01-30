@@ -10,19 +10,21 @@ using SpaceVIL.Common;
 
 namespace MimicSpace
 {
-    class AddMenuDialog : DialogWindow
+    class AddMenuDialog : DialogItem
     {
         public String InputResult = String.Empty;
         private ButtonCore add;
-        public override void InitWindow()
+        TextEdit input = new TextEdit();
+
+        public override void InitElements()
         {
+            //important!
+            base.InitElements();
+
             //window init
-            WindowLayout Handler = new WindowLayout(nameof(AddMenuDialog), "Adding a new friend", 330, 150, true);
-            SetHandler(Handler);
-            Handler.SetMinSize(330, 150);
-            Handler.SetBackground(47, 49, 54);
-            Handler.IsDialog = true;
-            Handler.IsAlwaysOnTop = true;
+            Window.SetMinSize(330, 150);
+            Window.SetBackground(47, 49, 54);
+            Window.SetPadding(0, 0, 0, 0);
 
             //title
             TitleBar title = new TitleBar("Adding a new friend");
@@ -38,7 +40,6 @@ namespace MimicSpace
             layout.SetBackground(255, 255, 255, 20);
 
             //new friend's name
-            TextEdit input = new TextEdit();
             input.SetBorderRadius(4);
             input.EventKeyRelease += OnKeyRelease;
 
@@ -51,14 +52,9 @@ namespace MimicSpace
             add.SetAlignment(ItemAlignment.HCenter | ItemAlignment.Bottom);
             add.SetPadding(0, 2, 0, 0);
             add.SetShadow(4, 0, 2, Color.FromArgb(150, 0, 0, 0));
-            add.EventMouseClick += (sender, args) =>
-            {
-                InputResult = input.GetText();
-                Handler.Close();
-            };
 
             //adding items
-            Handler.AddItems(
+            Window.AddItems(
                 title,
                 layout
             );
@@ -67,9 +63,36 @@ namespace MimicSpace
                 add
             );
 
+            add.EventMouseClick += (sender, args) =>
+            {
+                InputResult = input.GetText();
+                Close();
+            };
+
+            title.GetCloseButton().EventMouseClick = null;
+            title.GetCloseButton().EventMouseClick += (sender, args) =>
+            {
+                Close();
+            };
             //focus on textedit
             input.SetFocus();
         }
+
+        public override void Show(WindowLayout handler)
+        {
+            InputResult = String.Empty;
+            input.SetText(InputResult);
+            base.Show(handler);
+        }
+
+        public override void Close()
+        {
+            if (OnCloseDialog != null)
+                OnCloseDialog.Invoke();
+
+            base.Close();
+        }
+
 
         private void OnKeyRelease(IItem sender, KeyArgs args)
         {

@@ -1,37 +1,34 @@
 package com.customchance.View;
 
 import java.awt.Color;
-import com.spvessel.Common.DefaultsService;
-import com.spvessel.Core.InterfaceItem;
-import com.spvessel.Core.KeyArgs;
-import com.spvessel.Core.MouseArgs;
-import com.spvessel.Flags.KeyCode;
-import com.spvessel.ButtonCore;
-import com.spvessel.TextEdit;
-import com.spvessel.TitleBar;
-import com.spvessel.VerticalStack;
-import com.spvessel.DialogWindow;
-import com.spvessel.WindowLayout;
 
-class InputDialog extends DialogWindow {
+import com.spvessel.spacevil.Common.DefaultsService;
+import com.spvessel.spacevil.Core.InterfaceItem;
+import com.spvessel.spacevil.Core.KeyArgs;
+import com.spvessel.spacevil.Core.MouseArgs;
+import com.spvessel.spacevil.Flags.KeyCode;
+import com.spvessel.spacevil.ButtonCore;
+import com.spvessel.spacevil.TextEdit;
+import com.spvessel.spacevil.TitleBar;
+import com.spvessel.spacevil.VerticalStack;
+import com.spvessel.spacevil.WindowLayout;
+import com.spvessel.spacevil.DialogItem;
+
+class InputDialog extends DialogItem {
     public String inputResult = "";
-    ButtonCore _add;
-    TextEdit _input;
+    ButtonCore _add = new ButtonStand("Add");;
+    TextEdit _input = new TextEdit();
+
+    public InputDialog() {
+        super();
+        setItemName("InputDialog_");
+    }
 
     @Override
-    public void initWindow() {
-        // window's attr
-        WindowLayout Handler = new WindowLayout("InputDialog" + getCount(), "InputDialog" + getCount(), 330, 150,
-                true);
-        setHandler(Handler);
-        Handler.setWindowTitle("Add member");
-        Handler.setMinSize(330, 150);
-        Handler.setBackground(new Color(45, 45, 45));
-        Handler.isDialog = true;
-        Handler.isAlwaysOnTop = true;
+    public void initElements() {
+        super.initElements();
 
-        _add = new ButtonStand("Add");
-        _input = new TextEdit();
+        window.setBackground(new Color(45, 45, 45));
 
         // title
         TitleBar title = new TitleBar("Adding a new member");
@@ -51,18 +48,34 @@ class InputDialog extends DialogWindow {
         // ok
         _add.setBackground(255, 181, 111);
         _add.setStyle(Styles.getButtonStyle());
-        _add.setShadow(5, 0, 4, new Color(0, 0, 0, 150));
+        _add.setShadow(5, 0, 4, new Color(0, 0, 0, 120));
         _add.eventMouseClick.add((sender, args) -> {
             inputResult = _input.getText();
-            Handler.close();
+            close();
         });
 
         // adding
-        Handler.addItems(title, layout);
+        window.addItems(title, layout);
         layout.addItems(_input, _add);
 
-        // focus item
+        title.getCloseButton().eventMouseClick.clear();
+        title.getCloseButton().eventMouseClick.add((sender, args) -> {
+            close();
+        });
+    }
+
+    @Override
+    public void show(WindowLayout handler) {
+        super.show(handler);
         _input.setFocus();
+    }
+
+    @Override
+    public void close() {
+        if (onCloseDialog != null)
+            onCloseDialog.execute();
+
+        super.close();
     }
 
     private void onKeyRelease(InterfaceItem sender, KeyArgs args) {

@@ -1,8 +1,7 @@
 using System;
 using System.Drawing;
-using SpaceVIL;
-using System.Diagnostics;
 using CustomChance;
+using SpaceVIL;
 using SpaceVIL.Common;
 
 namespace Program
@@ -11,6 +10,7 @@ namespace Program
     {
         static void Main(string[] args)
         {
+            CommonService.InitSpaceVILComponents();
             MainWindow app = new MainWindow();
             WindowLayoutBox.TryShow(nameof(MainWindow));
         }

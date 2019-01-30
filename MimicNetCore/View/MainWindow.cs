@@ -94,12 +94,15 @@ namespace MimicSpace
             add_btn.EventMouseClick += (sender, args) =>
             {
                 AddMenuDialog dialog = new AddMenuDialog();
-                dialog.Show();
-                string result = dialog.InputResult;
-                if (!result.Equals(String.Empty))
+                dialog.OnCloseDialog += () =>
                 {
-                    contacts_bar.AddItem(InfinityItemsBox.GetVisualContact(result, input_message));
-                }
+                    string result = dialog.InputResult;
+                    if (!result.Equals(String.Empty))
+                    {
+                        contacts_bar.AddItem(InfinityItemsBox.GetVisualContact(result, input_message));
+                    }
+                };
+                dialog.Show(Handler);
             };
 
             CustomShape plus = new CustomShape();

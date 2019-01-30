@@ -64,18 +64,21 @@ namespace CustomChance
             AddButton.EventMouseClick += (sender, args) =>
             {
                 InputDialog dialog = new InputDialog();
-                dialog.Show();
 
-                String result = dialog.InputResult;
-                //add member
-                if (CommonLogic.GetInstance().AddMember(CommonLogic.GetInstance().Storage.Members, result))
+                dialog.OnCloseDialog += () =>
                 {
-                    //add member to ui
-                    MemberItem member = new MemberItem();
-                    member.MemberName.SetText(result);
-                    member.Index = CommonLogic.GetInstance().Storage.Members.Count - 1;
-                    _listBox.AddItem(member);
-                }
+                    String result = dialog.InputResult;
+                    //add member
+                    if (CommonLogic.GetInstance().AddMember(CommonLogic.GetInstance().Storage.Members, result))
+                    {
+                        //add member to ui
+                        MemberItem member = new MemberItem();
+                        member.MemberName.SetText(result);
+                        member.Index = CommonLogic.GetInstance().Storage.Members.Count - 1;
+                        _listBox.AddItem(member);
+                    }
+                };
+                dialog.Show(Handler);
             };
 
             //StartButton

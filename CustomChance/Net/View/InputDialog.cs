@@ -8,25 +8,25 @@ using SpaceVIL;
 using SpaceVIL.Common;
 using SpaceVIL.Core;
 using SpaceVIL.Decorations;
-
 namespace CustomChance
 {
-    class InputDialog : DialogWindow
+    class InputDialog : DialogItem
     {
         public String InputResult = String.Empty;
         ButtonCore _add = new ButtonStand("Add");
         TextEdit _input = new TextEdit();
 
-        public override void InitWindow()
+        public InputDialog() : base()
         {
+            SetItemName("InputDialog_");
+        }
+
+        public override void InitElements()
+        {
+            base.InitElements();
+
             //window's attr
-            WindowLayout Handler = new WindowLayout("_inputDialog", "_add member", 330, 150, true);
-            SetHandler(Handler);
-            Handler.SetWindowTitle("Add member");
-            Handler.SetMinSize(330, 150);
-            Handler.SetBackground(45, 45, 45);
-            Handler.IsDialog = true;
-            Handler.IsAlwaysOnTop = true;
+            Window.SetBackground(45, 45, 45);
 
             //title
             TitleBar title = new TitleBar("Adding a new member");
@@ -50,21 +50,40 @@ namespace CustomChance
             _add.EventMouseClick += (sender, args) =>
             {
                 InputResult = _input.GetText();
-                Handler.Close();
+                Close();
             };
 
             //adding items
-            Handler.AddItems(
+            Window.AddItems(
                 title,
                 layout
             );
             layout.AddItems(
-                _input, 
+                _input,
                 _add
             );
 
-            //focus item
+            title.GetCloseButton().EventMouseClick = null;
+            title.GetCloseButton().EventMouseClick += (sender, args) =>
+            {
+                Close();
+            };
+        }
+
+        public override void Show(WindowLayout handler)
+        {
+            InputResult = String.Empty;
+            _input.SetText(String.Empty);
+            base.Show(handler);
             _input.SetFocus();
+        }
+
+        public override void Close()
+        {
+            if (OnCloseDialog != null)
+                OnCloseDialog.Invoke();
+
+            base.Close();
         }
 
         private void OnKeyRelease(IItem sender, KeyArgs args)

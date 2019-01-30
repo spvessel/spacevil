@@ -68,18 +68,21 @@ public class MainWindow extends ActiveWindow {
         addButton.setShadow(5, 0, 4, new Color(0, 0, 0, 150));
         addButton.eventMouseClick.add((sender, args) -> {
             InputDialog dialog = new InputDialog();
-            dialog.show();
+            dialog.onCloseDialog.add(() -> {
+                String result = dialog.inputResult;
 
-            String result = dialog.inputResult;
+                // add logic member
+                if (CommonLogic.getInstance().addMember(CommonLogic.getInstance().Storage.Members, result)) {
+                    // add member to ui
+                    MemberItem member = new MemberItem();
+                    member.memberName.setText(result);
+                    member.index = CommonLogic.getInstance().Storage.Members.size() - 1;
+                    _listBox.addItem(member);
+                }
 
-            // add logic member
-            if (CommonLogic.getInstance().addMember(CommonLogic.getInstance().Storage.Members, result)) {
-                // add member to ui
-                MemberItem member = new MemberItem();
-                member.memberName.setText(result);
-                member.index = CommonLogic.getInstance().Storage.Members.size() - 1;
-                _listBox.addItem(member);
-            }
+                Handler.getWindow().setFocused(true);
+            });
+            dialog.show(Handler);
         });
 
         // addButton
