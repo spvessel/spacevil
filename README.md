@@ -10,8 +10,9 @@ In this tutorial, you will learn how to create a simple cross-platform applicati
 ### Step 1: Implementing SpaceVIL into you Project
 
 **C# / .NET Standard / Visual Studio**
+* Create console project
 * [Download](http://spvessel.com/index.html) SpaceVIL for **.NET Standard**
-* [Download](https://www.glfw.org) **glfw** and copy next to the executable. 
+* [Download](https://www.glfw.org) **glfw** and copy next to the executable file. 
 * Add Reference to **SpaceVIL.dll**
 * Check the framework by adding the line: 
     ```
@@ -20,12 +21,13 @@ In this tutorial, you will learn how to create a simple cross-platform applicati
 
 **C# / .NET Core / Visual Studio Code (or any other text editor)**
 
-* [Download](http://spvessel.com/index.html) SpaceVIL for **.NET Core**
-* **Windows:** [Download](https://www.glfw.org) **glfw** and copy next to the executable. **Linux:** install **libglfw3** and **libglfw3-dev** via repository
 * Create console project by executing the command in terminal:
     ```
     dotnet new console --output MyProject
     ```
+* [Download](http://spvessel.com/index.html) SpaceVIL for **.NET Core**
+* **Windows:** [Download](https://www.glfw.org) **glfw** and copy next to the executable file. **Linux:** install **libglfw3** and **libglfw3-dev** via repository.  **Mac OS X (very simplest way):** extract **libglfw.dylib** from **lwjgl-glfw-natives-macos.jar** and copy next to the executable file.
+
 * Copy **SpaceVIL.dll** in the MyProject folder
 * Add code below into **MyProject.csproj**:
     ```
@@ -33,6 +35,7 @@ In this tutorial, you will learn how to create a simple cross-platform applicati
       <Reference Include="SpaceVIL.dll"/> 
     </ItemGroup>
     ```
+**Windows / Linux:**
 * Install **System.Drawing.Common** from NuGet by command:
     ```
     dotnet add package System.Drawing.Common --version 4.5.0
@@ -41,6 +44,23 @@ In this tutorial, you will learn how to create a simple cross-platform applicati
     ```
     <ItemGroup> 
       <PackageReference Include="System.Drawing.Common" Version="4.5.0" /> 
+    </ItemGroup>
+    ```
+    
+**For Mac OS:**
+* Install **CoreCompat.System.Drawing.v2** from NuGet by command:
+    ```
+    dotnet add package CoreCompat.System.Drawing.v2 --version 5.2.0-preview1-r131
+    ```
+* Install **runtime.osx.10.10-x64.CoreCompat.System.Drawing** from NuGet by command:
+    ```
+    dotnet add package runtime.osx.10.10-x64.CoreCompat.System.Drawing --version 5.6.20
+    ```
+    or just add code below and then execute command in terminal: ```dotnet restore```
+    ```
+    <ItemGroup> 
+      <PackageReference Include="CoreCompat.System.Drawing.v2" Version="5.2.0-preview1-r131" /> 
+      <PackageReference Include="runtime.osx.10.10-x64.CoreCompat.System.Drawing" Version="5.6.20" /> 
     </ItemGroup>
     ```
 * Check the framework by adding the line: 
@@ -78,6 +98,16 @@ In this tutorial, you will learn how to create a simple cross-platform applicati
     ```
     compile fileTree(dir: 'libs', include: '*.jar')
     ```
+**For Mac OS:**
+* **ATTENTION!** To get your app work you should run jvm on Mac OS with **-XstartOnFirstThread** argument! In **build.gradle** add line: 
+    ```
+    applicationDefaultJvmArgs = ['-XstartOnFirstThread']
+    ```
+    or run your compiled ***.jar** file with command: 
+    ```
+    java -jar -XstartOnFirstThread your_app.jar
+    ```
+
 * Check the framework by adding the line:
     ```
     import com.spvessel.spacevil;
@@ -119,6 +149,7 @@ In this tutorial, you will learn how to create a simple cross-platform applicati
     ```
 * In **Program.cs** of project source file inside **Main** function add lines:
     ```
+    Common.CommonService.InitSpaceVILComponents();
     MainWindow mw = new MainWindow();
     WindowLayoutBox.TryShow(nameof(MainWindow));
     ```
@@ -132,6 +163,7 @@ In this tutorial, you will learn how to create a simple cross-platform applicati
       {
         static void Main(string[] args)
         {
+          Common.CommonService.InitSpaceVILComponents();
           MainWindow mw = new MainWindow();
           WindowLayoutBox.TryShow(nameof(MainWindow));
         }
@@ -165,14 +197,16 @@ In this tutorial, you will learn how to create a simple cross-platform applicati
 * In **App.java** add line on top of the file: **import com.spvessel.spacevil.*;**
 * In **App.java** of project source file inside main function add lines:
     ```
+    com.spvessel.spacevil.Common.CommonService.initSpaceVILComponents();
     MainWindow mw = new MainWindow();
     WindowLayoutBox.tryShow(MainWindow.class.getName());
     ```
 * Code should look like this:
     ```
-    import com.spvessel.*;
+    import com.spvessel.spacevil.*;
     public class App {
       public static void main(String[] args) {
+        com.spvessel.spacevil.Common.CommonService.initSpaceVILComponents();
         MainWindow mw = new MainWindow();
         WindowLayoutBox.tryShow(MainWindow.class.getSimpleName());
       }
