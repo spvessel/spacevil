@@ -26,7 +26,7 @@ In this tutorial, you will learn how to create a simple cross-platform applicati
     dotnet new console --output MyProject
     ```
 * [Download](http://spvessel.com/index.html) SpaceVIL for **.NET Core**
-* **Windows:** [Download](https://www.glfw.org) **glfw** and copy next to the executable file. **Linux:** install **libglfw3** and **libglfw3-dev** via repository.  **Mac OS X (very simplest way):** extract **libglfw.dylib** from **lwjgl-glfw-natives-macos.jar** and copy next to the executable file.
+* **Windows:** [Download](https://www.glfw.org) **glfw** and copy next to the executable file. **Linux:** install **libglfw3** and **libglfw3-dev** via repository.  **Mac OS X (simplest way):** extract **libglfw.dylib** from **lwjgl-glfw-natives-macos.jar** (or you can compile **libglfw.dylib** from sources) and copy next to the executable file.
 
 * Copy **SpaceVIL.dll** in the MyProject folder
 * Add code below into **MyProject.csproj**:
