@@ -1,5 +1,5 @@
 # SpaceVIL
-**[SpaceVIL](http://spvessel.com/index.html)** (Space of Visual Items Layout) is a cross-platform and multilingual framework for **creating GUI client applications for .NET Standard, .NET Core and JVM**. SpaceVIL is based on **OpenGL** graphic technology and [glfw](https://www.glfw.org). Using this framework in conjunction with Core or with a JVM, you can work and create graphical client applications on Linux operating systems.
+**[SpaceVIL](http://spvessel.com/index.html)** (Space of Visual Items Layout) is a cross-platform and multilingual framework for **creating GUI client applications for .NET Standard, .NET Core and JVM**. SpaceVIL is based on **OpenGL** graphic technology and [glfw](https://www.glfw.org). Using this framework in conjunction with Core or with a JVM, you can work and create graphical client applications on Linux, Mac OS X and Windows.
 See more on youtube channel - https://youtu.be/glYqBboBL5s
 You can also view SpaceVIL [documentation](http://spvessel.com).
 
