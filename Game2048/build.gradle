@@ -1,0 +1,10 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+mainClassName = 'com.game2048.Game'
+
+dependencies {
+    compile fileTree(dir: 'libs', include: '*.jar')
+}
