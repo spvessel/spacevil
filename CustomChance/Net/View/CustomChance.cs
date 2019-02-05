@@ -88,6 +88,8 @@ namespace CustomChance
             StartButton.SetShadow(5, 0, 4, Color.FromArgb(150, 0, 0, 0));
             StartButton.EventMouseClick += (sender, args) =>
             {
+                if (CommonLogic.GetInstance().Storage.Members == null || CommonLogic.GetInstance().Storage.Members.Count == 0)
+                    return;
                 CommonLogic.GetInstance().StartRandom(CommonLogic.GetInstance().Storage.Members);
                 UpdateUI();
             };

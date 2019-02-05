@@ -91,6 +91,9 @@ public class MainWindow extends ActiveWindow {
         startButton.setMargin(0, 5, 0, 5);
         startButton.setShadow(5, 0, 4, new Color(0, 0, 0, 150));
         startButton.eventMouseClick.add((sender, args) -> {
+            if (CommonLogic.getInstance().Storage.Members == null
+                    || CommonLogic.getInstance().Storage.Members.isEmpty())
+                return;
             CommonLogic.getInstance().startRandom(CommonLogic.getInstance().Storage.Members);
             updateUI();
         });
