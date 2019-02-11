@@ -20,7 +20,6 @@ class InputDialog extends DialogItem {
     TextEdit _input = new TextEdit();
 
     public InputDialog() {
-        super();
         setItemName("InputDialog_");
     }
 

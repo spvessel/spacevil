@@ -16,7 +16,7 @@ namespace CustomChance
         ButtonCore _add = new ButtonStand("Add");
         TextEdit _input = new TextEdit();
 
-        public InputDialog() : base()
+        public InputDialog()
         {
             SetItemName("InputDialog_");
         }
