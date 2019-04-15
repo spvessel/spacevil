@@ -52,6 +52,7 @@ namespace SimpleImageViewer
             imageArea.SetPadding(15, 6, 6, 6);
             imageArea.GetArea().SetSpacing(6, 6);
             imageArea.VScrollBar.SetStyle(Style.GetSimpleVerticalScrollBarStyle());
+            imageArea.SetStretch(true);
 
             previewArea = new PreviewArea(imageArea);
 
