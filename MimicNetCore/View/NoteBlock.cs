@@ -114,49 +114,25 @@ namespace MimicSpace
             _palette_menu.SetBorderFill(32, 32, 32);
             _palette_menu.SetBackground(60, 60, 60);
             _palette_menu.SetWidth(100);
-            _palette_menu.ItemList.SetSelectionVisibility(false);
+            _palette_menu.ItemList.SetSelectionVisible(false);
             _palette_menu.ActiveButton = MouseButton.ButtonLeft;
 
-            _palette_menu.ItemList.GetSelectionShape().SetBorderRadius(3);
-            _palette_menu.ItemList.GetHoverShape().SetBorderRadius(3);
-            _palette_menu.ItemList.GetHoverShape().SetBackground(42, 42, 42);
-
-            MenuItem red = new MenuItem("Red");
-            red.SetForeground(Color.LightGray);
-            red.AddItemState(ItemStateType.Hovered, new ItemState()
-            {
-                Background = Color.FromArgb(80, 255, 255, 255)
-            });
+            MenuItem red = InfinityItemsBox.GetMenuItem("Red");
             red.EventMouseClick += (sender, args) =>
             {
                 _text.SetBackground(255, 196, 196);
             };
-            MenuItem green = new MenuItem("Green");
-            green.SetForeground(Color.LightGray);
-            green.AddItemState(ItemStateType.Hovered, new ItemState()
-            {
-                Background = Color.FromArgb(80, 255, 255, 255)
-            });
+            MenuItem green = InfinityItemsBox.GetMenuItem("Green");
             green.EventMouseClick += (sender, args) =>
             {
                 _text.SetBackground(138, 255, 180);
             };
-            MenuItem blue = new MenuItem("Blue");
-            blue.SetForeground(Color.LightGray);
-            blue.AddItemState(ItemStateType.Hovered, new ItemState()
-            {
-                Background = Color.FromArgb(80, 255, 255, 255)
-            });
+            MenuItem blue = InfinityItemsBox.GetMenuItem("Blue");
             blue.EventMouseClick += (sender, args) =>
             {
                 _text.SetBackground(151, 203, 255);
             };
-            MenuItem yellow = new MenuItem("Yellow");
-            yellow.SetForeground(Color.LightGray);
-            yellow.AddItemState(ItemStateType.Hovered, new ItemState()
-            {
-                Background = Color.FromArgb(80, 255, 255, 255)
-            });
+            MenuItem yellow = InfinityItemsBox.GetMenuItem("Yellow");
             yellow.EventMouseClick += (sender, args) =>
             {
                 _text.SetBackground(234, 232, 162);

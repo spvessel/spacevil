@@ -24,23 +24,23 @@ namespace EnigmaGame.View
 
         public override void InitWindow()
         {
-            WindowLayout Handler = new WindowLayout(nameof(MainWindow), "EnigmaGame", 798, 640, true);
-            SetHandler(Handler);
-            Handler.SetBackground(Common.Background);
-            Handler.SetPadding(1, 1, 1, 1);
-            Handler.SetMinSize(Handler.GetWidth(), Handler.GetHeight());
+            SetParameters(nameof(MainWindow), "EnigmaGame", 798, 640, false);
+            SetAntiAliasingQuality(MSAA.MSAA8x);
+            SetBackground(Common.Background);
+            SetPadding(1, 1, 1, 1);
+            SetMinSize(GetWidth(), GetHeight());
 
             //icons
             var big = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("EnigmaGame.icon.png"));
             var small = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("EnigmaGame.icon.png"));
-            Handler.SetIcon(big, small);
+            SetIcon(big, small);
 
             TitleBar title = new TitleBar("EnigmaGame");
             title.SetIcon(small, 20, 20);
             title.SetShadow(5, 0, 2, Color.Black);
 
             VerticalStack layout = new VerticalStack();
-            layout.SetBackground(Handler.GetBackground());
+            layout.SetBackground(GetBackground());
             layout.SetPadding(30, 30, 30, 30);
             layout.SetMargin(10, title.GetHeight() + 10, 10, 10);
             layout.SetSpacing(0, 10);
@@ -49,7 +49,7 @@ namespace EnigmaGame.View
 
 
             //adding
-            Handler.AddItems(
+            AddItems(
                 layout,
                 title,
                 menu
@@ -63,7 +63,7 @@ namespace EnigmaGame.View
             );
 
             //events
-            Handler.GetWindow().EventKeyPress += OnKeyPress;
+            EventKeyPress += OnKeyPress;
 
             wrong = new SoundPlayer(Assembly.GetExecutingAssembly().GetManifestResourceStream("EnigmaGame.wrong.wav"));
             key = new SoundPlayer(Assembly.GetExecutingAssembly().GetManifestResourceStream("EnigmaGame.switch.wav"));
@@ -75,7 +75,7 @@ namespace EnigmaGame.View
             if (args.Key == KeyCode.Escape)
             {
                 if (menu.IsVisible())
-                    GetHandler().Close();
+                    Close();
                 else
                 {
                     _stop.Stop();
@@ -155,11 +155,7 @@ namespace EnigmaGame.View
         {
             _stop = new System.Timers.Timer(1000);
             _stop.Elapsed += TimesOut;
-            // Thread thr = new Thread( () => _stop.Start());
-            // thr.Start();
             _stop.Start();
-            // _stop.AutoReset = true;
-            // _stop.Enabled = true;
         }
 
         private void TimesOut(Object source, ElapsedEventArgs e)

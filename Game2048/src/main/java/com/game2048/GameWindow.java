@@ -25,14 +25,13 @@ public class GameWindow extends ActiveWindow {
 
     @Override
     public void initWindow() {
-        WindowLayout Handler = new WindowLayout("GameWindow", "GameWindow", 400, 460, true);
-        setHandler(Handler);
-        Handler.isResizable = false;
+        setParameters("GameWindow", "GameWindow", 400, 460, false);
+        isResizable = false;
 
-        Handler.setMinSize(400, 460);
-        Handler.setMaxSize(400, 460);
-        Handler.setBackground(new Color(0xbbada0));
-        Handler.setPadding(2, 2, 2, 2);
+        setMinSize(400, 460);
+        setMaxSize(400, 460);
+        setBackground(new Color(0xbbada0));
+        setPadding(2, 2, 2, 2);
 
         BufferedImage icon = null;
         BufferedImage iBig = null;
@@ -44,7 +43,7 @@ public class GameWindow extends ActiveWindow {
         } catch (IOException e) {
         }
         if (iBig != null && iSmall != null)
-            Handler.setIcon(iBig, iSmall);
+            setIcon(iBig, iSmall);
 
         TitleBar title = new TitleBar("GAME2048");
         if (icon != null)
@@ -62,7 +61,7 @@ public class GameWindow extends ActiveWindow {
         grid.setPadding(6, 6, 6, 0);
         grid.setBackground(new Color(0xbbada0));
         grid.setSpacing(12, 12);
-        getHandler().getWindow().eventKeyPress.add((intIte, keyArgs) -> controller.keyPressed(keyArgs));
+        eventKeyPress.add((intIte, keyArgs) -> controller.keyPressed(keyArgs));
 
         label = new Label("Score: 0");
         label.setHeight(42);
@@ -73,7 +72,7 @@ public class GameWindow extends ActiveWindow {
         label.setFont(DefaultsService.getDefaultFont(Font.BOLD, 36));
         label.setForeground(new Color(0x776e65));
 
-        Handler.addItems(title, vstack);
+        addItems(title, vstack);
         vstack.addItems(grid, label);
     }
 
@@ -87,7 +86,7 @@ public class GameWindow extends ActiveWindow {
                 if (ms.getResult())
                     controller.restartGame();
             });
-            ms.show(getHandler());
+            ms.show(this);
         }
         if (isGameLost) {
             MessageItem ms = new MessageItem("You lose!", "Message");
@@ -95,7 +94,7 @@ public class GameWindow extends ActiveWindow {
                 if (ms.getResult())
                     controller.restartGame();
             });
-            ms.show(getHandler());
+            ms.show(this);
         }
 
         label.setText("Score: " + controller.getScore());
@@ -103,7 +102,6 @@ public class GameWindow extends ActiveWindow {
 
     public void setTiles(Tile[][] tiles) {
         int wdt = tiles.length;
-        System.out.println(tiles.length);
 
         if (wdt != gridWidth && wdt != 0) {
             gridWidth = wdt;
@@ -113,7 +111,10 @@ public class GameWindow extends ActiveWindow {
 
         for (int i = 0; i < gridWidth; i++) {
             for (int j = 0; j < gridWidth; j++) {
-                grid.addItem(tiles[i][j]);
+                if (grid.getCell(i, j).getItem() != null)
+                    grid.removeItem(grid.getCell(i, j).getItem());
+                grid.insertItem(tiles[i][j], i, j);
+//                grid.addItem(tiles[i][j]);
             }
         }
     }

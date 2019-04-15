@@ -70,7 +70,7 @@ namespace CustomChance
             };
         }
 
-        public override void Show(WindowLayout handler)
+        public override void Show(CoreWindow handler)
         {
             InputResult = String.Empty;
             _input.SetText(String.Empty);

@@ -2,9 +2,10 @@ package com.customchance.View;
 
 import java.awt.Color;
 
-import com.spvessel.ButtonCore;
-import com.spvessel.Rectangle;
-import com.spvessel.Flags.*;
+import com.spvessel.spacevil.ButtonCore;
+import com.spvessel.spacevil.Rectangle;
+import com.spvessel.spacevil.Flags.SizePolicy;
+import com.spvessel.spacevil.Flags.ItemAlignment;
 
 class ButtonStand extends ButtonCore {
     Rectangle _stand;

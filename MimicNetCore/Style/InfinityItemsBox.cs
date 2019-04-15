@@ -26,7 +26,10 @@ namespace MimicSpace
             lb.SetText(message);
             lb.SetForeground(154, 156, 159);
             lb.SetFont(DefaultsService.GetDefaultFont(16));
-            lb.SetMargin(20, 0, 0, 0);
+            lb.SetMargin(10, 0, 0, 0);
+            lb.SetBorderRadius(6);
+            lb.SetPadding(10, 0, 0, 0);
+            lb.AddItemState(ItemStateType.Hovered, new ItemState(Color.FromArgb(64, 67, 73)));
             return lb;
         }
 
@@ -41,14 +44,13 @@ namespace MimicSpace
             return btn;
         }
 
-        internal static VisualContact GetVisualContact(String name, TextEdit input_message)
+        internal static VisualContact GetVisualContact(String name, TextEdit input)
         {
-            VisualContact contact = new VisualContact(name);
+            VisualContact contact = new VisualContact(name, input);
             contact.SendMessage.EventMouseClick += (sender, args) =>
             {
-                input_message.SetText("Message @" + name);
-                input_message.SetFocus();
-                input_message.SelectAll();
+                input.SetSubstrateText("Message @" + name);
+                input.SetFocus();
             };
             return contact;
         }
@@ -58,6 +60,16 @@ namespace MimicSpace
             NoteBlock block = new NoteBlock();
             block.SetSize(250, 200);
             return block;
+        }
+
+        internal static MenuItem GetMenuItem(String name)
+        {
+            MenuItem item = new MenuItem(name);
+            item.SetForeground(Color.LightGray);
+            item.SetMargin(1, 1, 1, 1);
+            item.AddItemState(ItemStateType.Hovered, new ItemState(Color.FromArgb(150, 255, 255, 255)));
+            item.SetBorderRadius(3);
+            return item;
         }
     }
 }

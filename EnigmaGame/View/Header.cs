@@ -21,7 +21,7 @@ namespace EnigmaGame.View
         {
             //decryption
             Label decryption = new Label("DECRYPTION");
-            decryption.SetFont(Common.MoireFont);
+            decryption.SetFont(Common.AppFont);
             decryption.SetFontSize(22);
             decryption.SetForeground(Common.Text);
             decryption.SetTextAlignment(ItemAlignment.VCenter | ItemAlignment.Left);
@@ -29,7 +29,7 @@ namespace EnigmaGame.View
 
             //enigma codes
             enigma_codes.SetText("ENIGMA CODES LEVEL   |   0");
-            enigma_codes.SetFont(Common.MoireFont);
+            enigma_codes.SetFont(Common.AppFont);
             enigma_codes.SetFontSize(22);
             enigma_codes.SetForeground(166, 66, 42);
             enigma_codes.SetTextAlignment(ItemAlignment.VCenter | ItemAlignment.Right);

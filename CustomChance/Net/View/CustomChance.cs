@@ -19,16 +19,15 @@ namespace CustomChance
         public override void InitWindow()
         {
             //Window attr
-            WindowLayout Handler = new WindowLayout(nameof(MainWindow), nameof(CustomChance), 360, 500, true);
-            SetHandler(Handler);
-            Handler.SetMinSize(350, 500);
-            Handler.SetBackground(45, 45, 45);
-            Handler.GetWindow().EventKeyRelease += (sender, args) => OnKeyRelease(sender, args);
+            SetParameters(nameof(MainWindow), nameof(CustomChance), 360, 500, false);
+            SetMinSize(350, 500);
+            SetBackground(45, 45, 45);
+            EventKeyRelease += (sender, args) => OnKeyRelease(sender, args);
 
             //icons
             var big = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("CustomChance.icon_big.png"));
             var small = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("CustomChance.icon_small.png"));
-            Handler.SetIcon(big, small);
+            SetIcon(big, small);
 
             //title
             TitleBar title = new TitleBar("Custom Chance");
@@ -39,7 +38,7 @@ namespace CustomChance
             title.GetCloseButton().EventMouseClick += (sender, args) =>
             {
                 CommonLogic.GetInstance().TrySerialize();
-                this.Handler.Close();
+                Close();
             };
 
             //layout
@@ -54,7 +53,7 @@ namespace CustomChance
             _listBox.SetBackground(52, 52, 52);
             _listBox.SetHScrollBarVisible(ScrollBarVisibility.Never);
             _listBox.SetVScrollBarVisible(ScrollBarVisibility.Never);
-            _listBox.SetSelectionVisibility(false);
+            _listBox.SetSelectionVisible(false);
 
             //AddButton
             AddButton = new ButtonStand("Add a Member!");
@@ -78,7 +77,7 @@ namespace CustomChance
                         _listBox.AddItem(member);
                     }
                 };
-                dialog.Show(Handler);
+                dialog.Show(this);
             };
 
             //StartButton
@@ -95,7 +94,7 @@ namespace CustomChance
             };
 
             //adding
-            Handler.AddItems(
+            AddItems(
                 title,
                 layout
             );

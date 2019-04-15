@@ -2,17 +2,19 @@ package com.customchance.View;
 
 import java.awt.Color;
 import java.awt.Font;
+
 import com.customchance.Model.CommonLogic;
-import com.spvessel.Decorations.CustomFigure;
-import com.spvessel.Decorations.ItemState;
-import com.spvessel.GraphicsMathService;
-import com.spvessel.Flags.ItemAlignment;
-import com.spvessel.Flags.ItemStateType;
-import com.spvessel.Flags.SizePolicy;
-import com.spvessel.ButtonCore;
-import com.spvessel.Grid;
-import com.spvessel.Label;
-import com.spvessel.Prototype;
+
+import com.spvessel.spacevil.Decorations.CustomFigure;
+import com.spvessel.spacevil.Decorations.ItemState;
+import com.spvessel.spacevil.GraphicsMathService;
+import com.spvessel.spacevil.Flags.ItemAlignment;
+import com.spvessel.spacevil.Flags.ItemStateType;
+import com.spvessel.spacevil.Flags.SizePolicy;
+import com.spvessel.spacevil.ButtonCore;
+import com.spvessel.spacevil.Grid;
+import com.spvessel.spacevil.Label;
+import com.spvessel.spacevil.Prototype;
 
 class MemberItem extends Prototype {
     public static int _count = 0;
@@ -38,7 +40,7 @@ class MemberItem extends Prototype {
             memberName.setFontStyle(Font.BOLD);
             memberValue.setFontStyle(Font.BOLD);
         } else {
-            setBackground(new Color(0, 0, 0, 0));
+            setBackground(52, 52, 52);
             memberName.setFontStyle(Font.PLAIN);
             memberValue.setFontStyle(Font.PLAIN);
         }
@@ -47,10 +49,12 @@ class MemberItem extends Prototype {
     public MemberItem() {
         // self view attr
         setItemName("Member_" + _count);
-        setBackground(0, 0, 0, 0);
         setSize(0, 30);
+        setBackground(52, 52, 52);
         setSizePolicy(SizePolicy.EXPAND, SizePolicy.FIXED);
+        setAlignment(ItemAlignment.LEFT, ItemAlignment.TOP);
         setPadding(5, 0, 5, 0);
+        addItemState(ItemStateType.HOVERED, new ItemState(new Color(255, 255, 255, 30)));
         _count++;
 
         layout = new Grid(1, 3);
@@ -63,7 +67,7 @@ class MemberItem extends Prototype {
     public void initElements() {
         // Name
         memberName.setStyle(Styles.getLabelStyle());
-        
+
         // Value
         memberValue.setStyle(Styles.getLabelStyle());
         memberValue.setText("0%");

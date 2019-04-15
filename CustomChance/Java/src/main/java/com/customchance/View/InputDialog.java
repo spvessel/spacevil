@@ -8,10 +8,10 @@ import com.spvessel.spacevil.Core.KeyArgs;
 import com.spvessel.spacevil.Core.MouseArgs;
 import com.spvessel.spacevil.Flags.KeyCode;
 import com.spvessel.spacevil.ButtonCore;
+import com.spvessel.spacevil.CoreWindow;
 import com.spvessel.spacevil.TextEdit;
 import com.spvessel.spacevil.TitleBar;
 import com.spvessel.spacevil.VerticalStack;
-import com.spvessel.spacevil.WindowLayout;
 import com.spvessel.spacevil.DialogItem;
 
 class InputDialog extends DialogItem {
@@ -64,7 +64,7 @@ class InputDialog extends DialogItem {
     }
 
     @Override
-    public void show(WindowLayout handler) {
+    public void show(CoreWindow handler) {
         super.show(handler);
         _input.setFocus();
     }

@@ -1,7 +1,6 @@
 ﻿using System;
 using SpaceVIL;
 using SpaceVIL.Common;
-
 namespace EnigmaGame
 {
     class Program
@@ -10,8 +9,7 @@ namespace EnigmaGame
         {
             CommonService.InitSpaceVILComponents();
             View.MainWindow mw = new View.MainWindow();
-            WindowLayoutBox.TryShow(mw.GetWindowGuid());
-            Console.WriteLine("Ready...");
+            mw.Show();
         }
     }
 }

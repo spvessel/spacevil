@@ -36,7 +36,7 @@ namespace EnigmaGame.View
             progress.SetSizePolicy(SizePolicy.Expand, SizePolicy.Fixed);
             progress.SetBorderRadius(2);
 
-            value.SetFont(Common.MoireFont);
+            value.SetFont(Common.AppFont);
             value.SetFontSize(22);
             value.SetForeground(Common.Text);
             value.SetTextAlignment(ItemAlignment.VCenter | ItemAlignment.Right);

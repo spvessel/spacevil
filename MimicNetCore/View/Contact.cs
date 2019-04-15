@@ -25,9 +25,10 @@ namespace MimicSpace
         public MenuItem Call;
         public MenuItem SendMessage;
         public MenuItem RemoveFriend;
-
-        public VisualContact(string name)
+TextEdit _input;
+        public VisualContact(string name, TextEdit input)
         {
+            _input = input;
             this.name = name;
             SetItemName("VC_" + _count);
             SetBackground(Color.Transparent);
@@ -41,9 +42,9 @@ namespace MimicSpace
 
             EventMouseClick += MouseClick;
 
-            Call = new MenuItem("Call");
-            SendMessage = new MenuItem("Send message");
-            RemoveFriend = new MenuItem("Remove friend");
+            Call = InfinityItemsBox.GetMenuItem("Call");
+            SendMessage = InfinityItemsBox.GetMenuItem("Send message");
+            RemoveFriend = InfinityItemsBox.GetMenuItem("Remove friend");
         }
 
         public override void InitElements()
@@ -94,7 +95,7 @@ namespace MimicSpace
 
             //adding
             AddItems(border, signal, contact, close);
-            IsFocusable = true;
+            // IsFocusable = true;
         }
 
         public void DisposeSelf()
@@ -112,17 +113,20 @@ namespace MimicSpace
         public void UncheckOthers()
         {
             IsChecked = true;
-            List<IBaseItem> list = GetParent().GetItems();
+            List<IBaseItem> list = GetParent().GetParent().GetItems();
             foreach (var item in list)
             {
-                VisualContact tmp = item as VisualContact;
-                if (item.Equals(this) || tmp == null)
+                SelectionItem tmp = item as SelectionItem;
+                if (item.Equals(GetParent()) || tmp == null)
                     continue;
-                tmp.IsChecked = false;
-                tmp.Update();
+
+                VisualContact _current = (tmp.GetContent() as VisualContact);
+                _current.IsChecked = false;
+                _current.Update();
             }
             Update();
         }
+
         public override void SetMouseHover(bool value)
         {
             if (value)
@@ -155,29 +159,26 @@ namespace MimicSpace
             }
         }
 
-        void InitContactMenu(WindowLayout handler)
+        void InitContactMenu(CoreWindow handler)
         {
             cm = new ContextMenu(GetHandler());
             cm.SetBorderRadius(5);
             cm.SetBorderThickness(1);
             cm.SetBorderFill(32, 32, 32);
             cm.SetBackground(60, 60, 60);
-            cm.ItemList.SetSelectionVisibility(false);
+            cm.ItemList.SetSelectionVisible(false);
             cm.ActiveButton = MouseButton.ButtonRight;
-
-            cm.ItemList.GetSelectionShape().SetBorderRadius(3);
-            cm.ItemList.GetHoverShape().SetBorderRadius(3);
-            cm.ItemList.GetHoverShape().SetBackground(42, 42, 42);
+            cm.SetReturnFocus(_input);
 
             Call.SetForeground(Color.LightGray);
             Call.EventMouseClick += (sender, args) =>
             {
-                PopUpMessage pop = new PopUpMessage("Calling " + contact.GetText() + "...", handler);
+                PopUpMessage pop = new PopUpMessage("Calling " + contact.GetText() + "...");
                 pop.AddItemState(ItemStateType.Hovered, new ItemState(Color.FromArgb(42, 44, 49)));
                 pop.SetBorderRadius(new CornerRadius(6, 6, 6, 6));
                 pop.SetFont(DefaultsService.GetDefaultFont(18));
                 pop.SetShadow(5, 3, 3, Color.FromArgb(200, 0, 0, 0));
-                pop.Show();
+                pop.Show(handler);
             };
             SendMessage.SetForeground(Color.LightGray);
 

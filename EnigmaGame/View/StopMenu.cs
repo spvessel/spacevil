@@ -25,12 +25,12 @@ namespace EnigmaGame.View
             title.SetHeightPolicy(SizePolicy.Fixed);
             title.SetHeight(30);
             title.SetTextAlignment(ItemAlignment.Top | ItemAlignment.HCenter);
-            title.SetFont(Common.MoireFont);
+            title.SetFont(Common.AppFont);
             title.SetForeground(Common.Selected);
 
             Label manual = new Label("PRESS (SPACE) TO PLAY OR (ESCAPE) TO EXIT");
             manual.SetStyle(title.GetCoreStyle());
-            manual.SetFont(Common.MoireFont);
+            manual.SetFont(Common.AppFont);
             manual.SetTextAlignment(ItemAlignment.Top | ItemAlignment.HCenter);
             manual.SetForeground(Common.Selected);
 

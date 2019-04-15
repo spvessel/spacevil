@@ -14,8 +14,7 @@ namespace EnigmaGame.View
     }
     internal static class Common
     {
-        //internal static readonly Font MoireFont = new Font(new FontFamily("Moire"), 22, FontStyle.Regular);
-        internal static readonly Font MoireFont = DefaultsService.GetDefaultFont(22);
+        internal static readonly Font AppFont = DefaultsService.GetDefaultFont(22);
         internal static readonly Color Background = Color.FromArgb(255, 20, 20, 20);
         internal static readonly Color Extinguished = Color.FromArgb(255, 47, 26, 20);
         internal static readonly Color Neitral = Color.FromArgb(255, 68, 34, 24);
@@ -186,7 +185,7 @@ namespace EnigmaGame.View
         internal static Label GetNumber(int number)
         {
             Label card_number = new Label();
-            card_number.SetFont(Common.MoireFont);
+            card_number.SetFont(Common.AppFont);
             card_number.SetFontSize(22);
             card_number.SetForeground(Common.Neitral);
             card_number.SetTextAlignment(ItemAlignment.VCenter | ItemAlignment.HCenter);

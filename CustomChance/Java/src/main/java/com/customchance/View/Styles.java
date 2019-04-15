@@ -1,12 +1,15 @@
 package com.customchance.View;
 
-import com.spvessel.Decorations.*;
-import com.spvessel.Flags.*;
-
 import java.awt.Color;
 import java.awt.Font;
 
-import com.spvessel.Common.*;
+import com.spvessel.spacevil.Decorations.Style;
+import com.spvessel.spacevil.Decorations.CornerRadius;
+import com.spvessel.spacevil.Decorations.ItemState;
+import com.spvessel.spacevil.Common.DefaultsService;
+import com.spvessel.spacevil.Flags.SizePolicy;
+import com.spvessel.spacevil.Flags.ItemAlignment;
+import com.spvessel.spacevil.Flags.ItemStateType;
 
 class Styles {
     private Styles() {

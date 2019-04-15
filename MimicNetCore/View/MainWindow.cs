@@ -18,10 +18,9 @@ namespace MimicSpace
         public override void InitWindow()
         {
             //window init
-            WindowLayout Handler = new WindowLayout(nameof(MainWindow), nameof(MainWindow), 1300, 840, true);
-            SetHandler(Handler);
-            Handler.SetMinSize(500, 300);
-            Handler.SetBackground(32, 34, 37);
+            SetParameters(nameof(MainWindow), nameof(MainWindow), 1300, 840, false);
+            SetMinSize(500, 300);
+            SetBackground(32, 34, 37);
 
             //title
             title = new TitleBar("Mimic");
@@ -102,7 +101,7 @@ namespace MimicSpace
                         contacts_bar.AddItem(InfinityItemsBox.GetVisualContact(result, input_message));
                     }
                 };
-                dialog.Show(Handler);
+                dialog.Show(this);
             };
 
             CustomShape plus = new CustomShape();
@@ -132,8 +131,7 @@ namespace MimicSpace
             contacts_bar.SetBackground(Color.Transparent);
             contacts_bar.SetHScrollBarVisible(ScrollBarVisibility.Never);
             contacts_bar.SetVScrollBarVisible(ScrollBarVisibility.Never);
-            contacts_bar.SetSelectionVisibility(false);
-            contacts_bar.SetHoverVisibility(false);
+            contacts_bar.SetSelectionVisible(false);
 
             Frame user_bar = new Frame();
             user_bar.SetBorderRadius(new CornerRadius(0, 0, 6, 0));
@@ -146,10 +144,14 @@ namespace MimicSpace
             TextEdit search = new TextEdit();
             search.SetPadding(10, 0, 10, 0);
             search.SetFont(DefaultsService.GetDefaultFont(12));
-            search.SetText("Find or start conversation");
+            search.SetForeground(150, 150, 150);
+            search.SetSubstrateText("Find or start conversation");
+            search.SetSubstrateFontSize(12);
+            search.SetSubstrateFontStyle(FontStyle.Regular);
+            search.SetSubstrateForeground(100, 100, 100);
             search.SetHeight(32);
             search.SetBackground(37, 39, 43);
-            search.SetAlignment(ItemAlignment.HCenter | ItemAlignment.VCenter);
+            search.SetAlignment(ItemAlignment.HCenter, ItemAlignment.VCenter);
             search.SetBorderRadius(4);
             search.SetBorderThickness(1);
             search.SetBorderFill(32, 34, 37);
@@ -176,14 +178,7 @@ namespace MimicSpace
             conversation.SetBackground(Color.Transparent);
             conversation.SetHScrollBarVisible(ScrollBarVisibility.Never);
             conversation.GetArea().SetPadding(16, 10, 2, 2);
-
-            SpaceVIL.Rectangle selection_substrate = conversation.GetSelectionShape();
-            selection_substrate.SetBorderRadius(6);
-            selection_substrate.SetBackground(74, 76, 82);
-
-            SpaceVIL.Rectangle hover_substrate = conversation.GetHoverShape();
-            hover_substrate.SetBorderRadius(6);
-            hover_substrate.SetBackground(64, 67, 73);
+            conversation.SetSelectionVisible(false);
 
             VerticalScrollBar vs = conversation.VScrollBar;
             vs.SetWidth(16);
@@ -194,12 +189,12 @@ namespace MimicSpace
             vs.SetBackground(47, 49, 54);
             vs.SetPadding(0, 0, 0, 0);
             vs.Slider.Track.SetBackground(Color.Transparent);
-            vs.Slider.Handler.SetBorderThickness(4);
-            vs.Slider.Handler.SetBorderFill(54, 57, 63);
-            vs.Slider.Handler.SetBorderRadius(new CornerRadius(9));
-            vs.Slider.Handler.SetBackground(32, 34, 37, 255);
-            vs.Slider.Handler.SetMargin(new Indents(0, 0, 0, 0));
-            vs.Slider.Handler.RemoveAllItemStates();
+            vs.Slider.SetBorderThickness(4);
+            vs.Slider.SetBorderFill(54, 57, 63);
+            vs.Slider.SetBorderRadius(new CornerRadius(9));
+            vs.Slider.SetBackground(32, 34, 37, 255);
+            vs.Slider.SetMargin(new Indents(0, 0, 0, 0));
+            vs.Slider.RemoveAllItemStates();
 
             HorizontalStack input_bar = new HorizontalStack();
             input_bar.SetHeight(44);
@@ -227,7 +222,7 @@ namespace MimicSpace
             input_message.SetForeground(Color.White);
             input_message.SetAlignment(ItemAlignment.VCenter);
             input_message.SetBorderRadius(new CornerRadius(0, 3, 0, 3));
-            input_message.SetText("Message @Jackson");
+            input_message.SetSubstrateText("Message @Jackson");
             input_message.EventKeyPress += (sender, args) =>
             {
                 if (args.Key == KeyCode.Enter)
@@ -251,7 +246,7 @@ namespace MimicSpace
             };
 
             //adding items
-            Handler.AddItems(
+            AddItems(
                 title,
                 h_stack
             );
@@ -278,12 +273,6 @@ namespace MimicSpace
             search_bar.AddItems(
                 search
             );
-            contacts_bar.AddItems(
-                InfinityItemsBox.GetVisualContact("Jackson", input_message),
-                InfinityItemsBox.GetVisualContact("Evelyn", input_message),
-                InfinityItemsBox.GetVisualContact("Alexander", input_message),
-                InfinityItemsBox.GetVisualContact("Matthew", input_message)
-            );
             user_bar.AddItems(
                 new UserBar("Daniel")
             );
@@ -304,6 +293,12 @@ namespace MimicSpace
                 emoji,
                 divider_v,
                 input_message
+            );
+            contacts_bar.AddItems(
+                InfinityItemsBox.GetVisualContact("Jackson", input_message),
+                InfinityItemsBox.GetVisualContact("Evelyn", input_message),
+                InfinityItemsBox.GetVisualContact("Alexander", input_message),
+                InfinityItemsBox.GetVisualContact("Matthew", input_message)
             );
         }
     }

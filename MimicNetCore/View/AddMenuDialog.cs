@@ -78,11 +78,12 @@ namespace MimicSpace
             input.SetFocus();
         }
 
-        public override void Show(WindowLayout handler)
+        public override void Show(CoreWindow handler)
         {
             InputResult = String.Empty;
             input.SetText(InputResult);
             base.Show(handler);
+            input.SetFocus();
         }
 
         public override void Close()

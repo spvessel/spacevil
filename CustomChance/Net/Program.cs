@@ -12,7 +12,7 @@ namespace Program
         {
             CommonService.InitSpaceVILComponents();
             MainWindow app = new MainWindow();
-            WindowLayoutBox.TryShow(nameof(MainWindow));
+            app.Show();
         }
     }
 }

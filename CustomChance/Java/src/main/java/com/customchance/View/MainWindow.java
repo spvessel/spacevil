@@ -4,13 +4,22 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+
 import com.customchance.Model.CommonLogic;
 import com.customchance.Model.Member;
 
-import com.spvessel.Common.DefaultsService;
-import com.spvessel.Core.*;
-import com.spvessel.Flags.*;
-import com.spvessel.*;
+import com.spvessel.spacevil.Common.DefaultsService;
+import com.spvessel.spacevil.Core.InterfaceBaseItem;
+import com.spvessel.spacevil.Core.InterfaceItem;
+import com.spvessel.spacevil.Core.KeyArgs;
+import com.spvessel.spacevil.Core.MouseArgs;
+import com.spvessel.spacevil.Flags.KeyCode;
+import com.spvessel.spacevil.Flags.ScrollBarVisibility;
+import com.spvessel.spacevil.ActiveWindow;
+import com.spvessel.spacevil.ButtonCore;
+import com.spvessel.spacevil.ListBox;
+import com.spvessel.spacevil.TitleBar;
+import com.spvessel.spacevil.VerticalStack;
 
 public class MainWindow extends ActiveWindow {
     public ButtonCore addButton;
@@ -20,11 +29,10 @@ public class MainWindow extends ActiveWindow {
     @Override
     public void initWindow() {
         // Window attr
-        WindowLayout Handler = new WindowLayout(this.getClass().getSimpleName(), "CustomChance", 360, 500, true);
-        setHandler(Handler);
-        Handler.setMinSize(350, 500);
-        Handler.setBackground(new Color(45, 45, 45));
-        Handler.getWindow().eventKeyRelease.add((sender, args) -> onKeyRelease(sender, args));
+        setParameters(this.getClass().getSimpleName(), "CustomChance", 360, 500, false);
+        setMinSize(350, 500);
+        setBackground(new Color(45, 45, 45));
+        eventKeyRelease.add((sender, args) -> onKeyRelease(sender, args));
 
         BufferedImage iBig = null;
         BufferedImage iSmall = null;
@@ -34,7 +42,7 @@ public class MainWindow extends ActiveWindow {
         } catch (IOException e) {
         }
         if (iBig != null && iSmall != null)
-            Handler.setIcon(iBig, iSmall);
+            setIcon(iBig, iSmall);
 
         // title attr
         TitleBar title = new TitleBar("Custom Chance");
@@ -44,7 +52,7 @@ public class MainWindow extends ActiveWindow {
         title.getCloseButton().eventMouseClick.clear();
         title.getCloseButton().eventMouseClick.add((sender, args) -> {
             CommonLogic.getInstance().trySerialize();
-            this.getHandler().close();
+            this.close();
         });
 
         // layout attr
@@ -59,13 +67,14 @@ public class MainWindow extends ActiveWindow {
         _listBox.setBackground(new Color(52, 52, 52));
         _listBox.setHScrollBarVisible(ScrollBarVisibility.NEVER);
         _listBox.setVScrollBarVisible(ScrollBarVisibility.NEVER);
-        _listBox.setSelectionVisibility(false);
+        _listBox.setSelectionVisible(false);
 
         // addButton
         addButton = new ButtonStand("Add a Member!");
+        addButton.isFocusable = false;
         addButton.setStyle(Styles.getButtonStyle());
         addButton.setMargin(0, 5, 0, 5);
-        addButton.setShadow(5, 0, 4, new Color(0, 0, 0, 150));
+        addButton.setShadow(5, 0, 4, new Color(0, 0, 0, 120));
         addButton.eventMouseClick.add((sender, args) -> {
             InputDialog dialog = new InputDialog();
             dialog.onCloseDialog.add(() -> {
@@ -79,17 +88,16 @@ public class MainWindow extends ActiveWindow {
                     member.index = CommonLogic.getInstance().Storage.Members.size() - 1;
                     _listBox.addItem(member);
                 }
-
-                Handler.getWindow().setFocused(true);
+                setFocus();
             });
-            dialog.show(Handler);
+            dialog.show(this);
         });
 
         // addButton
         startButton = new ButtonStand("Make a Chance!");
         startButton.setStyle(Styles.getButtonStyle());
         startButton.setMargin(0, 5, 0, 5);
-        startButton.setShadow(5, 0, 4, new Color(0, 0, 0, 150));
+        startButton.setShadow(5, 0, 4, new Color(0, 0, 0, 120));
         startButton.eventMouseClick.add((sender, args) -> {
             if (CommonLogic.getInstance().Storage.Members == null
                     || CommonLogic.getInstance().Storage.Members.isEmpty())
@@ -99,7 +107,7 @@ public class MainWindow extends ActiveWindow {
         });
 
         // adding
-        Handler.addItems(title, layout);
+        addItems(title, layout);
         layout.addItems(addButton, _listBox, startButton);
 
         if (CommonLogic.getInstance().Storage.Members.size() > 0)
@@ -130,7 +138,11 @@ public class MainWindow extends ActiveWindow {
     }
 
     private void onKeyRelease(InterfaceItem sender, KeyArgs args) {
-        if (args.key == KeyCode.SPACE)
+        if (args.key == KeyCode.SPACE) {
             addButton.eventMouseClick.execute(addButton, new MouseArgs());
+        }
+        if (args.key == KeyCode.ENTER) {
+            startButton.eventMouseClick.execute(addButton, new MouseArgs());
+        }
     }
 }

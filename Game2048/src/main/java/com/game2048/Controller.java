@@ -12,7 +12,6 @@ public class Controller {
         this.model = model;
         gw = new GameWindow(this);
         gw.setTiles(model.getGameTiles());
-
     }
 
     public void startGame() {
@@ -28,17 +27,19 @@ public class Controller {
         model.resetGameTiles();
         gw.isGameLost = false;
         gw.isGameWon = false;
+        gw.setTiles(model.getGameTiles());
+        gw.checkTheGame();
     }
 
-    public void keyPressed(KeyArgs keyArgs) {
-        if (keyArgs.key == KeyCode.ESCAPE) {
+    public void keyPressed(KeyArgs args) {
+        if (args.key == KeyCode.ESCAPE) {
             restartGame();
             return;
         }
         if (!model.canMove()) gw.isGameLost = true;
 
-        if ((!gw.isGameLost) && (!gw.isGameLost)) {
-            switch (keyArgs.key) {
+        if ((!gw.isGameLost) && (!gw.isGameWon)) {
+            switch (args.key) {
                 case LEFT:
                     model.left();
                     break;
