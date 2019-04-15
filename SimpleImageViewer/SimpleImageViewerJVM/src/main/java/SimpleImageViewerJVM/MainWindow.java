@@ -69,6 +69,7 @@ public class MainWindow extends ActiveWindow {
         imageArea.setPadding(15, 6, 6, 6);
         imageArea.getArea().setSpacing(6, 6);
         imageArea.vScrollBar.setStyle(Style.getSimpleVerticalScrollBarStyle());
+        imageArea.setStretch(true);
 
         previewArea = new PreviewArea(imageArea);
 
