@@ -20,9 +20,8 @@ namespace CharacterEditor
 
         public override void InitWindow()
         {
-            WindowLayout Handler = new WindowLayout(nameof(CharacterEditor), nameof(CharacterEditor), 1000, 600, true);
-            SetHandler(Handler);
-            Handler.IsCentered = true;
+            SetParameters(nameof(CharacterEditor), nameof(CharacterEditor), 1000, 600, false);
+            IsCentered = true;
 
             //title
             TitleBar title = new TitleBar(nameof(CharacterEditor));
@@ -42,7 +41,7 @@ namespace CharacterEditor
             //////////////////////////////////////////////////////////////////////////////
 
             //adding
-            Handler.AddItems(title, layout);
+            AddItems(title, layout);
             layout.AddItems(toolbar, splitArea);
             splitArea.AssignLeftItem(ItemList);
             splitArea.AssignRightItem(ItemText);

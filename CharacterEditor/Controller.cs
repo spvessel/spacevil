@@ -56,18 +56,18 @@ namespace CharacterEditor
                             PopUpMessage popUpInfo = new PopUpMessage("Character save successfully!");
                             popUpInfo.SetBackground(188, 188, 188);
                             popUpInfo.SetForeground(Color.Black);
-                            popUpInfo.Show(_mw.GetHandler());
+                            popUpInfo.Show(_mw);
                         }
                         else
                         {
                             PopUpMessage popUpInfo = new PopUpMessage("Character save failed!");
                             popUpInfo.SetBackground(188, 188, 188);
                             popUpInfo.SetForeground(Color.Black);
-                            popUpInfo.Show(_mw.GetHandler());
+                            popUpInfo.Show(_mw);
                         }
                     }
                 };
-                opd.Show(_mw.GetHandler());
+                opd.Show(_mw);
             };
         }
 
