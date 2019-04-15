@@ -1,6 +1,6 @@
 # SpaceVIL
 **[SpaceVIL](http://spvessel.com/index.html)** (Space of Visual Items Layout) is a cross-platform and multilingual framework for **creating GUI client applications for .NET Standard, .NET Core and JVM**. SpaceVIL is based on **OpenGL** graphic technology and [glfw](https://www.glfw.org). Using this framework in conjunction with Core or with a JVM, you can work and create graphical client applications on Linux, Mac OS X and Windows.
-See more on youtube channel - https://youtu.be/glYqBboBL5s
+See more on youtube channel - https://youtu.be/kJ6n1fTHXws
 You can also view SpaceVIL [documentation](http://spvessel.com).
 
 ## Get started with SpaceVIL
@@ -122,7 +122,7 @@ In this tutorial, you will learn how to create a simple cross-platform applicati
 * Create class **MainWindow**
 * Class **MainWindow** must be inherited from class **SpaceVIL.ActiveWindow**
 * Override method **InitWindow**
-* Create instance of **WindowLayout**
+* Set basic parameters of window via method **SetParameters()**
 * Code should look like this:
     ```
     using System;
@@ -134,11 +134,9 @@ In this tutorial, you will learn how to create a simple cross-platform applicati
       {
         public override void InitWindow()
         {
-          WindowLayout Handler = new WindowLayout(nameof(MainWindow), nameof(MainWindow), 
-                    800, 600, false);
-          SetHandler(Handler);
-          Handler.SetMinSize(400, 300);
-          Handler.SetBackground(32, 34, 37);
+          SetParameters(nameof(MainWindow), nameof(MainWindow), 800, 600);
+          SetMinSize(400, 300);
+          SetBackground(32, 34, 37);
         }
       }
     }
@@ -151,7 +149,7 @@ In this tutorial, you will learn how to create a simple cross-platform applicati
     ```
     Common.CommonService.InitSpaceVILComponents();
     MainWindow mw = new MainWindow();
-    WindowLayoutBox.TryShow(nameof(MainWindow));
+    mw.Show();
     ```
 * Code should look like this:
     ```
@@ -165,7 +163,7 @@ In this tutorial, you will learn how to create a simple cross-platform applicati
         {
           Common.CommonService.InitSpaceVILComponents();
           MainWindow mw = new MainWindow();
-          WindowLayoutBox.TryShow(nameof(MainWindow));
+          mw.Show();
         }
       }
     }
@@ -178,7 +176,7 @@ In this tutorial, you will learn how to create a simple cross-platform applicati
 * Create class **MainWindow**
 * Class **MainWindow** must be inherited from class **com.spvessel.spacevil.ActiveWindow**
 * Override method **initWindow**
-* Create instance of **WindowLayout**
+* Set basic parameters of window via method **setParameters()**
 * Code should look like this:
     ```
     import java.awt.Color;
@@ -186,11 +184,9 @@ In this tutorial, you will learn how to create a simple cross-platform applicati
     class MainWindow extends ActiveWindow {
       @Override
       public void initWindow() {
-        WindowLayout Handler = new WindowLayout(this.getClass().getSimpleName(), "App",
-                     360, 500, false);
-        setHandler(Handler);
-        Handler.setMinSize(350, 500);
-        Handler.setBackground(new Color(45, 45, 45));
+        setParameters(this.getClass().getSimpleName(), "App", 360, 500);
+        setMinSize(350, 500);
+        setBackground(45, 45, 45);
       }
     }
     ```
@@ -199,7 +195,7 @@ In this tutorial, you will learn how to create a simple cross-platform applicati
     ```
     com.spvessel.spacevil.Common.CommonService.initSpaceVILComponents();
     MainWindow mw = new MainWindow();
-    WindowLayoutBox.tryShow(MainWindow.class.getName());
+    mw.show();
     ```
 * Code should look like this:
     ```
@@ -208,7 +204,7 @@ In this tutorial, you will learn how to create a simple cross-platform applicati
       public static void main(String[] args) {
         com.spvessel.spacevil.Common.CommonService.initSpaceVILComponents();
         MainWindow mw = new MainWindow();
-        WindowLayoutBox.tryShow(MainWindow.class.getSimpleName());
+        mw.show();
       }
     }
     ```
@@ -221,7 +217,7 @@ In this tutorial, you will learn how to create a simple cross-platform applicati
 
 * Items can be added to the window as follows:
     ```
-    Handler.AddItem(item2);
+    AddItem(item2);
     ```
     where **Handler** is WindowLayout of current ActiveWindow (or DialogWindow) 
     ###
@@ -234,7 +230,7 @@ In this tutorial, you will learn how to create a simple cross-platform applicati
 **JAVA**
 * Items can be added to the window as follows:
     ```
-    Handler.addItem(item2);
+    addItem(item2);
     ```
     where **Handler** is WindowLayout of current ActiveWindow (or DialogWindow) 
     ###
