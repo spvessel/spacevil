@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
+using System.Threading;
 
 using SpaceVIL;
 using SpaceVIL.Core;
@@ -39,8 +40,14 @@ namespace CharacterEditor
 
             _mw.BtnGenerate.EventMouseClick += (sender, args) =>
             {
-                _mw.ItemList.Clear();
-                FillListBox(_model.GetListOfNames((int)_mw.NumberCount.GetValue()));
+                _mw.BtnGenerate.SetDisabled(true);
+                Thread fillThread = new Thread(() =>
+                {
+                    _mw.ItemList.Clear();
+                    FillListBox(_model.GetListOfNames((int)_mw.NumberCount.GetValue()));
+                    _mw.BtnGenerate.SetDisabled(false);
+                });
+                fillThread.Start();
             };
 
             _mw.BtnSave.EventMouseClick += (sender, args) =>
