@@ -218,8 +218,7 @@ In this tutorial, you will learn how to create a simple cross-platform applicati
 * Items can be added to the window as follows:
     ```
     AddItem(item2);
-    ```
-    where **Handler** is WindowLayout of current ActiveWindow (or DialogWindow) 
+    ``` 
     ###
 
 * Items can be added to another item simply by calling method:
@@ -232,7 +231,6 @@ In this tutorial, you will learn how to create a simple cross-platform applicati
     ```
     addItem(item2);
     ```
-    where **Handler** is WindowLayout of current ActiveWindow (or DialogWindow) 
     ###
 * Items can be added to another item simply by calling method:
     ```
