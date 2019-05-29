@@ -54,7 +54,7 @@ public class PreviewArea extends Prototype {
         _expand.setBackground(new Color(0, 0, 0, 0));
         _expand.setBorderRadius(15);
         _expand.setPadding(5, 5, 5, 5);
-        _expand.addItemState(ItemStateType.HOVERED, new ItemState(new Color(255, 255, 255, 120)));
+        _expand.addItemState(ItemStateType.HOVERED, new ItemState(new Color(255, 255, 255, 20)));
         _expand.addItemState(ItemStateType.PRESSED, new ItemState(new Color(0, 0, 0, 0)));
 
         ButtonCore _menu = new ButtonCore();
@@ -64,7 +64,7 @@ public class PreviewArea extends Prototype {
         _menu.setBackground(new Color(0, 0, 0, 0));
         _menu.setBorderRadius(15);
         _menu.setPadding(5, 5, 5, 5);
-        _menu.addItemState(ItemStateType.HOVERED, new ItemState(new Color(255, 255, 255, 120)));
+        _menu.addItemState(ItemStateType.HOVERED, new ItemState(new Color(255, 255, 255, 20)));
         _menu.addItemState(ItemStateType.PRESSED, new ItemState(new Color(0, 0, 0, 0)));
 
         addItems(_toolbar, area, _expand, _menu);

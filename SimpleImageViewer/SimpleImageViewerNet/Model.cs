@@ -16,11 +16,11 @@ namespace SimpleImageViewer
             if (directory == null || directory == String.Empty)
                 return;
 
+            LoadingScreen screen = new LoadingScreen();
+            screen.Show(handler);
+
             Task thread = new Task(() =>
             {
-                LoadingScreen screen = new LoadingScreen();
-                screen.Show(handler);
-
                 area.Clear();
 
                 DirectoryInfo d = new DirectoryInfo(directory);

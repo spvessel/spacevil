@@ -14,7 +14,7 @@ namespace SimpleImageViewer
             style.Background = Color.Transparent;
             style.SetSize(30, 30);
             style.SetPadding(6, 6, 6, 6);
-            style.GetState(ItemStateType.Hovered).Background = Color.FromArgb(120, 255, 255, 255);
+            style.GetState(ItemStateType.Hovered).Background = Color.FromArgb(20, 255, 255, 255);
             return style;
         }
 

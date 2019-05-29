@@ -53,7 +53,7 @@ namespace SimpleImageViewer
             _expand.SetBackground(Color.Transparent);
             _expand.SetBorderRadius(15);
             _expand.SetPadding(5, 5, 5, 5);
-            _expand.AddItemState(ItemStateType.Hovered, new ItemState(Color.FromArgb(120, 255, 255, 255)));
+            _expand.AddItemState(ItemStateType.Hovered, new ItemState(Color.FromArgb(20, 255, 255, 255)));
             _expand.AddItemState(ItemStateType.Pressed, new ItemState(Color.Transparent));
 
             ButtonCore _menu = new ButtonCore();
@@ -63,7 +63,7 @@ namespace SimpleImageViewer
             _menu.SetBackground(Color.Transparent);
             _menu.SetBorderRadius(15);
             _menu.SetPadding(5, 5, 5, 5);
-            _menu.AddItemState(ItemStateType.Hovered, new ItemState(Color.FromArgb(120, 255, 255, 255)));
+            _menu.AddItemState(ItemStateType.Hovered, new ItemState(Color.FromArgb(20, 255, 255, 255)));
             _menu.AddItemState(ItemStateType.Pressed, new ItemState(Color.Transparent));
 
             base.AddItem(_toolbar);

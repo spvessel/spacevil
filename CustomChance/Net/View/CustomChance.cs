@@ -23,6 +23,11 @@ namespace CustomChance
             SetMinSize(350, 500);
             SetBackground(45, 45, 45);
             EventKeyRelease += (sender, args) => OnKeyRelease(sender, args);
+            EventClose = () =>
+            {
+                CommonLogic.GetInstance().TrySerialize();
+                Close();
+            };
 
             //icons
             var big = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("CustomChance.icon_big.png"));
@@ -34,12 +39,6 @@ namespace CustomChance
             title.SetIcon(small, 16, 16);
             title.SetFont(DefaultsService.GetDefaultFont(14));
             title.GetMaximizeButton().SetVisible(false);
-            title.GetCloseButton().EventMouseClick = null;
-            title.GetCloseButton().EventMouseClick += (sender, args) =>
-            {
-                CommonLogic.GetInstance().TrySerialize();
-                Close();
-            };
 
             //layout
             VerticalStack layout = new VerticalStack();

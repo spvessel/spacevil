@@ -33,6 +33,12 @@ public class MainWindow extends ActiveWindow {
         setMinSize(350, 500);
         setBackground(new Color(45, 45, 45));
         eventKeyRelease.add((sender, args) -> onKeyRelease(sender, args));
+        
+        eventClose.clear();
+        eventClose.add(() -> {
+            CommonLogic.getInstance().trySerialize();
+            this.close();
+        });
 
         BufferedImage iBig = null;
         BufferedImage iSmall = null;
@@ -49,11 +55,6 @@ public class MainWindow extends ActiveWindow {
         title.setIcon(iBig, 16, 16);
         title.setFont(DefaultsService.getDefaultFont(14));
         title.getMaximizeButton().setVisible(false);
-        title.getCloseButton().eventMouseClick.clear();
-        title.getCloseButton().eventMouseClick.add((sender, args) -> {
-            CommonLogic.getInstance().trySerialize();
-            this.close();
-        });
 
         // layout attr
         VerticalStack layout = new VerticalStack();

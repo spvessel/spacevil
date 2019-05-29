@@ -31,10 +31,11 @@ public class Model {
     public static void fillImageArea(CoreWindow handler, WrapGrid area, PreviewArea preview, String directory) {
         if (directory == null || directory.equals(""))
             return;
-        Thread tr = new Thread(() -> {
-            LoadingScreen screen = new LoadingScreen();
-            screen.show(handler);
 
+        LoadingScreen screen = new LoadingScreen();
+        screen.show(handler);
+
+        Thread tr = new Thread(() -> {
             area.clear();
             File fileFolder = new File(directory);
 

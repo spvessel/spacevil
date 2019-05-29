@@ -176,12 +176,10 @@ public class MainWindow extends ActiveWindow {
             });
             browse.show(this);
         });
-    }
 
-    @Override
-    public void show() {
-        Model.fillImageArea(this, imageArea, previewArea,
-                System.getProperty("user.home") + File.separator + "Pictures");
-        super.show();
+        eventOnStart.add(() -> {
+            Model.fillImageArea(this, imageArea, previewArea,
+                    System.getProperty("user.home") + File.separator + "Pictures");
+        });
     }
 }

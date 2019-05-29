@@ -14,7 +14,7 @@ public class CustomStyle {
         style.background = new Color(0, 0, 0, 0);
         style.setSize(30, 30);
         style.setPadding(6, 6, 6, 6);
-        style.getState(ItemStateType.HOVERED).background = new Color(255, 255, 255, 120);
+        style.getState(ItemStateType.HOVERED).background = new Color(255, 255, 255, 20);
         return style;
     }
 

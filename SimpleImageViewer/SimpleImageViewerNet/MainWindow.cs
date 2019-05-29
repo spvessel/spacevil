@@ -181,12 +181,12 @@ namespace SimpleImageViewer
                 };
                 browse.Show(this);
             };
-        }
 
-        public override void Show()
-        {
-            Model.FillImageArea(this, imageArea, previewArea, Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + Path.DirectorySeparatorChar + "Pictures");
-            base.Show();
+            EventOnStart += () =>
+            {
+                Model.FillImageArea(this, imageArea, previewArea, 
+                    Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + Path.DirectorySeparatorChar + "Pictures");
+            }
         }
     }
 }
