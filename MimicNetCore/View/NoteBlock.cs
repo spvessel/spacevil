@@ -45,7 +45,7 @@ namespace MimicSpace
             _palette.SetBorderRadius(new CornerRadius(3));
 
             CustomShape arrow = new CustomShape();
-            arrow.SetTriangles(GraphicsMathService.GetTriangle(a: 180));
+            arrow.SetTriangles(GraphicsMathService.GetTriangle(angle: 180));
             arrow.SetBackground(50, 50, 50);
             arrow.SetSize(14, 6);
             arrow.SetMargin(0, 1, 0, 0);
