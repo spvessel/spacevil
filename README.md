@@ -38,29 +38,29 @@ In this tutorial, you will learn how to create a simple cross-platform applicati
 **Windows / Linux:**
 * Install **System.Drawing.Common** from NuGet by command:
     ```
-    dotnet add package System.Drawing.Common --version 4.5.0
+    dotnet add package System.Drawing.Common --version 4.6.0-preview7.19362.9
     ```
     or just add code below and then execute command in terminal: ```dotnet restore```
     ```
     <ItemGroup> 
-      <PackageReference Include="System.Drawing.Common" Version="4.5.0" /> 
+      <PackageReference Include="System.Drawing.Common" Version="4.6.0-preview7.19362.9" /> 
     </ItemGroup>
     ```
     
 **For Mac OS:**
 * Install **CoreCompat.System.Drawing.v2** from NuGet by command:
     ```
-    dotnet add package CoreCompat.System.Drawing.v2 --version 5.2.0-preview1-r131
+    dotnet add package System.Drawing.Common --version 4.6.0-preview7.19362.9
     ```
 * Install **runtime.osx.10.10-x64.CoreCompat.System.Drawing** from NuGet by command:
     ```
-    dotnet add package runtime.osx.10.10-x64.CoreCompat.System.Drawing --version 5.6.20
+    dotnet add package runtime.osx.10.10-x64.CoreCompat.System.Drawing --version 5.8.64
     ```
     or just add code below and then execute command in terminal: ```dotnet restore```
     ```
     <ItemGroup> 
-      <PackageReference Include="CoreCompat.System.Drawing.v2" Version="5.2.0-preview1-r131" /> 
-      <PackageReference Include="runtime.osx.10.10-x64.CoreCompat.System.Drawing" Version="5.6.20" /> 
+      <PackageReference Include="System.Drawing.Common" Version="4.6.0-preview7.19362.9" /> 
+      <PackageReference Include="runtime.osx.10.10-x64.CoreCompat.System.Drawing" Version="5.8.64" /> 
     </ItemGroup>
     ```
 * Check the framework by adding the line: 
