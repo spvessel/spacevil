@@ -10,6 +10,9 @@ In this tutorial, you will learn how to create a simple cross-platform applicati
 ### Step 1: Implementing SpaceVIL into you Project
 
 **C# / .NET Standard / Visual Studio**
+**ATTENTION FOR WINDOWS OS USERS:**
+GLFW library should be renamed to **"glfw.dll"** (if you download binaries from the official GLFW website, you get a library named **"glfw3.dll"**)
+
 * Create console project
 * [Download](http://spvessel.com/index.html) SpaceVIL for **.NET Standard**
 * [Download](https://www.glfw.org) **glfw** and copy next to the executable file. 
