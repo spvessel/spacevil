@@ -37,6 +37,8 @@ public class Model {
 
         Thread tr = new Thread(() -> {
             area.clear();
+            Runtime.getRuntime().gc();
+            
             File fileFolder = new File(directory);
 
             ArrayList<File> files = new ArrayList<File>(Arrays.asList(fileFolder.listFiles()));
@@ -97,7 +99,6 @@ public class Model {
             img.flush();
 
             screen.setToClose();
-            System.gc();
         });
         tr.start();
     }
