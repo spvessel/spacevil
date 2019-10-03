@@ -36,7 +36,8 @@ namespace SimpleImageViewer
                     if (CheckExtensionFilter(f))
                     {
                         Bitmap img = new Bitmap(f.FullName);
-                        Picture pic = new Picture(DownScaleBitmap(img, 170, 100), f.Name, f.FullName);
+                        Bitmap dBitmap = DownScaleBitmap(img, 170, 100);
+                        Picture pic = new Picture(dBitmap, f.Name, f.FullName);
 
                         pic.EventMouseClick += (sender, args) =>
                         {
@@ -47,6 +48,7 @@ namespace SimpleImageViewer
                             if (args.Key == KeyCode.Enter)
                                 ReplacePreviewImage(area, preview, pic);
                         };
+                        dBitmap.Dispose();
                         img.Dispose();
                         list.Add(pic);
                     }
