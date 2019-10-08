@@ -30,7 +30,7 @@ public class MainWindow extends ActiveWindow {
         // add items to window
         addItems(toolBar, sideBar, ItemsFactory.getAreaForPermanentToolTip());
 
-        // add items with standard tooltip to ToolBar
+        // 1. add items with standard tooltip to ToolBar
         toolBar.addItems(
                 ItemsFactory.getTool(DefaultsService.getDefaultImage(EmbeddedImage.FILE, EmbeddedImageSize.SIZE_32X32),
                         "Create a new file"),
@@ -44,7 +44,7 @@ public class MainWindow extends ActiveWindow {
                         DefaultsService.getDefaultImage(EmbeddedImage.REFRESH, EmbeddedImageSize.SIZE_32X32),
                         "Refresh"));
 
-        // add items with MyToolTip to sideBar
+        // 2. add items with MyToolTip to sideBar
         sideBar.addItems(
                 ItemsFactory.getSideTool(
                         DefaultsService.getDefaultImage(EmbeddedImage.FILE, EmbeddedImageSize.SIZE_32X32),
