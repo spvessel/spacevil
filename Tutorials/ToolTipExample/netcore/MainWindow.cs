@@ -27,7 +27,7 @@ namespace ToolTipExample
                 ItemsFactory.GetAreaForPermanentToolTip()
             );
 
-            // add items with standard tooltip to ToolBar
+            // 1. add items with standard tooltip to ToolBar
             toolBar.AddItems(
                 ItemsFactory.GetTool(DefaultsService.GetDefaultImage(EmbeddedImage.File, EmbeddedImageSize.Size32x32), "Create a new file"),
                 ItemsFactory.GetTool(DefaultsService.GetDefaultImage(EmbeddedImage.Folder, EmbeddedImageSize.Size32x32), "Create a new folder"),
@@ -35,7 +35,7 @@ namespace ToolTipExample
                 ItemsFactory.GetTool(DefaultsService.GetDefaultImage(EmbeddedImage.Refresh, EmbeddedImageSize.Size32x32), "Refresh")
             );
 
-            // add items with MyToolTip to sideBar
+            // 2. add items with MyToolTip to sideBar
             sideBar.AddItems(
                 ItemsFactory.GetSideTool(DefaultsService.GetDefaultImage(EmbeddedImage.File, EmbeddedImageSize.Size32x32),
                     new MyToolTip(this, "Create new file:\nCreates a new file in the root directory.")),
