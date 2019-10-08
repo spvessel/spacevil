@@ -11,6 +11,6 @@ public class App {
 
         // optional: create your window and show it
         MyWindow mw = new MyWindow();
-        mw.Show();
+        mw.show();
     }
 }
