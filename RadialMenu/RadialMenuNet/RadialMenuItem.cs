@@ -169,6 +169,11 @@ namespace RadialMenu
             SetVisible(false);
             GetHandler().SetFocus();
         }
+        
+        public void Hide(MouseArgs args)
+        {
+            Hide();
+        }
 
         public void Show()
         {
