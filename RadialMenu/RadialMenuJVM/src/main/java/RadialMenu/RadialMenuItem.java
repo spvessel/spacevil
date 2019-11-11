@@ -169,6 +169,10 @@ public class RadialMenuItem extends Prototype implements InterfaceFloating, Inte
         setVisible(false);
         getHandler().setFocus();
     }
+    
+    public void hide(MouseArgs args) {
+        hide();
+    }
 
     public void show() {
         if (!_isInit) {
