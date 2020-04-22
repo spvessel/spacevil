@@ -16,7 +16,7 @@ import com.spvessel.spacevil.Core.InterfaceFloating;
 import com.spvessel.spacevil.Core.InterfaceFreeLayout;
 import com.spvessel.spacevil.Core.InterfaceItem;
 import com.spvessel.spacevil.Core.MouseArgs;
-import com.spvessel.spacevil.Core.Pointer;
+import com.spvessel.spacevil.Core.Position;
 import com.spvessel.spacevil.Decorations.Style;
 import com.spvessel.spacevil.Flags.EmbeddedImage;
 import com.spvessel.spacevil.Flags.EmbeddedImageSize;
@@ -65,7 +65,7 @@ public class RadialMenuItem extends Prototype implements InterfaceFloating, Inte
             rearrangeContacts();
         });
         eventKeyPress.add((sender, args) -> {
-            if (args.key == KeyCode.MENU)
+            if (args.key == KeyCode.ESCAPE)
                 hide();
         });
         eventMousePress.add(this::onMousePress);
@@ -167,11 +167,11 @@ public class RadialMenuItem extends Prototype implements InterfaceFloating, Inte
     // IFloating
     public void hide() {
         setVisible(false);
-        getHandler().setFocus();
     }
     
     public void hide(MouseArgs args) {
         hide();
+        getHandler().resetFocus();
     }
 
     public void show() {
@@ -219,7 +219,7 @@ public class RadialMenuItem extends Prototype implements InterfaceFloating, Inte
     }
 
     private void rearrangeContacts() {
-        Pointer centerPoint = getCenter();
+        Position centerPoint = getCenter();
         _alpha += _degreeDiff;
 
         for (Contact item : _contacts) {
@@ -231,8 +231,8 @@ public class RadialMenuItem extends Prototype implements InterfaceFloating, Inte
         }
     }
 
-    private double calculateDegreeByPos(Pointer position) {
-        Pointer centerPoint = getCenter();
+    private double calculateDegreeByPos(Position position) {
+        Position centerPoint = getCenter();
         double degree = Math.atan2(position.getY() - centerPoint.getY(), position.getX() - centerPoint.getX());
         if (degree < 0)
             degree += _doubledPI;
@@ -243,8 +243,8 @@ public class RadialMenuItem extends Prototype implements InterfaceFloating, Inte
         _alphaStep = _doubledPI / _contacts.size();
     }
 
-    private Pointer getCenter() {
-        Pointer center = new Pointer();
+    private Position getCenter() {
+        Position center = new Position();
         int xCenter = hideButton.getWidth() / 2 + hideButton.getX();
         int yCenter = hideButton.getHeight() / 2 + hideButton.getY();
         center.setPosition(xCenter, yCenter);

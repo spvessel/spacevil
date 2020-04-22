@@ -97,7 +97,7 @@ namespace CharacterEditor
             removeBtn.SetSizePolicy(SizePolicy.Fixed, SizePolicy.Fixed);
             removeBtn.SetSize(10, 10);
             removeBtn.SetAlignment(ItemAlignment.VCenter, ItemAlignment.Right);
-            removeBtn.SetCustomFigure(new CustomFigure(false, GraphicsMathService.GetCross(10, 10, 2, 45)));
+            removeBtn.SetCustomFigure(new Figure(false, GraphicsMathService.GetCross(10, 10, 2, 45)));
             removeBtn.AddItemState(ItemStateType.Hovered, new ItemState(Color.FromArgb(200, 95, 97)));
 
             //close event

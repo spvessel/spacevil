@@ -120,7 +120,7 @@ final class ItemsFactory {
         graph.setSizePolicy(SizePolicy.EXPAND, SizePolicy.EXPAND);
         graph.setPadding(5, 5, 5, 5);
         graph.setPointsCoord(koh);
-        graph.setShapePointer(
+        graph.setPointShape(
                 GraphicsMathService.getCross(graph.getPointThickness(), graph.getPointThickness(), 1, 45));
 
         return graph;

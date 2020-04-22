@@ -6,7 +6,7 @@ import java.awt.Font;
 import com.spvessel.spacevil.*;
 import com.spvessel.spacevil.Common.*;
 import com.spvessel.spacevil.Core.*;
-import com.spvessel.spacevil.Decorations.CustomFigure;
+import com.spvessel.spacevil.Decorations.Figure;
 import com.spvessel.spacevil.Decorations.ItemState;
 import com.spvessel.spacevil.Flags.*;
 
@@ -66,7 +66,7 @@ public class Album extends VerticalStack {
         name.setCursor(EmbeddedCursor.HAND);
 
         _remove.setSize(12, 12);
-        _remove.setCustomFigure(new CustomFigure(false, GraphicsMathService.getCross(12, 12, 3, 45)));
+        _remove.setCustomFigure(new Figure(false, GraphicsMathService.getCross(12, 12, 3, 45)));
         _remove.setBackground(100, 100, 100);
         _remove.setAlignment(ItemAlignment.VCENTER, ItemAlignment.LEFT);
         _remove.setMargin(0, 0, 5, 0);

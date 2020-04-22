@@ -1,11 +1,8 @@
 package OpenGLLayerExample;
 
-import java.util.*;
 import java.util.List;
-import java.nio.*;
 import java.awt.*;
 
-import org.lwjgl.*;
 import static org.lwjgl.opengl.GL30.glBindVertexArray;
 import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 import static org.lwjgl.opengl.GL30.glDeleteVertexArrays;
@@ -75,7 +72,7 @@ public class OpenGLLayer extends Prototype implements InterfaceOpenGLLayer, Inte
         });
     }
 
-    private Pointer _ptr = new Pointer();
+    private Position _ptr = new Position();
 
     // shaders
     private int _shaderCommon = 0;

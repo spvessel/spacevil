@@ -43,8 +43,8 @@ namespace SimpleImageViewer
             _name.SetHeight(70);
 
             _albumList.SetSelectionVisible(false);
-            _albumList.SetVScrollBarVisible(ScrollBarVisibility.AsNeeded);
-            _albumList.SetHScrollBarVisible(ScrollBarVisibility.Never);
+            _albumList.SetVScrollBarPolicy(VisibilityPolicy.AsNeeded);
+            _albumList.SetHScrollBarPolicy(VisibilityPolicy.Never);
             _albumList.SetBackground(Color.Transparent);
             _albumList.SetMargin(10, 100, 10, 50);
             _albumList.VScrollBar.SetStyle(Style.GetSimpleVerticalScrollBarStyle());

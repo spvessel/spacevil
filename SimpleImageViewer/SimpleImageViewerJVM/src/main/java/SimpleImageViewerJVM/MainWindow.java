@@ -25,7 +25,7 @@ import com.spvessel.spacevil.Flags.KeyMods;
 import com.spvessel.spacevil.Flags.Orientation;
 import com.spvessel.spacevil.Flags.Side;
 import com.spvessel.spacevil.Flags.SizePolicy;
-import com.spvessel.spacevil.OpenEntryDialog.OpenDialogType;
+import com.spvessel.spacevil.Flags.OpenDialogType;
 
 public class MainWindow extends ActiveWindow {
     WrapGrid imageArea;

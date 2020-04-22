@@ -14,7 +14,7 @@ import com.spvessel.spacevil.Core.InterfaceItem;
 import com.spvessel.spacevil.Core.KeyArgs;
 import com.spvessel.spacevil.Core.MouseArgs;
 import com.spvessel.spacevil.Flags.KeyCode;
-import com.spvessel.spacevil.Flags.ScrollBarVisibility;
+import com.spvessel.spacevil.Flags.VisibilityPolicy;
 import com.spvessel.spacevil.ActiveWindow;
 import com.spvessel.spacevil.ButtonCore;
 import com.spvessel.spacevil.ListBox;
@@ -66,8 +66,8 @@ public class MainWindow extends ActiveWindow {
         // listbox
         _listBox = new ListBox();
         _listBox.setBackground(new Color(52, 52, 52));
-        _listBox.setHScrollBarVisible(ScrollBarVisibility.NEVER);
-        _listBox.setVScrollBarVisible(ScrollBarVisibility.NEVER);
+        _listBox.setHScrollBarPolicy(VisibilityPolicy.NEVER);
+        _listBox.setVScrollBarPolicy(VisibilityPolicy.NEVER);
         _listBox.setSelectionVisible(false);
 
         // addButton

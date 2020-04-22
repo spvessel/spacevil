@@ -53,7 +53,7 @@ namespace SimpleImageViewer
                         list.Add(pic);
                     }
                     float persent = ((float)index / (float)count) * 100.0f;
-                    screen.SetValue((int)persent);
+                    screen.SetCurrentValue((int)persent);
                 });
                 if (list.Count == 0)
                 {

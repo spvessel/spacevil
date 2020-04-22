@@ -78,7 +78,7 @@ TextEdit _input;
             close.SetSizePolicy(SizePolicy.Fixed, SizePolicy.Fixed);
             close.SetAlignment(ItemAlignment.VCenter | ItemAlignment.Right);
             close.SetMargin(0, 0, 12, 0);
-            close.SetCustomFigure(new CustomFigure(false, GraphicsMathService.GetCross(10, 10, 1, 45)));
+            close.SetCustomFigure(new Figure(false, GraphicsMathService.GetCross(10, 10, 1, 45)));
             close.AddItemState(ItemStateType.Hovered, new ItemState()
             {
                 Background = Color.FromArgb(255, 255, 255, 255)
@@ -168,7 +168,7 @@ TextEdit _input;
             cm.SetBackground(60, 60, 60);
             cm.ItemList.SetSelectionVisible(false);
             cm.ActiveButton = MouseButton.ButtonRight;
-            cm.SetReturnFocus(_input);
+            cm.ReturnFocus = _input;
 
             Call.SetForeground(Color.LightGray);
             Call.EventMouseClick += (sender, args) =>

@@ -50,8 +50,8 @@ namespace CustomChance
             //listBox
             _listBox = new ListBox();
             _listBox.SetBackground(52, 52, 52);
-            _listBox.SetHScrollBarVisible(ScrollBarVisibility.Never);
-            _listBox.SetVScrollBarVisible(ScrollBarVisibility.Never);
+            _listBox.SetHScrollBarPolicy(VisibilityPolicy.Never);
+            _listBox.SetVScrollBarPolicy(VisibilityPolicy.Never);
             _listBox.SetSelectionVisible(false);
 
             //AddButton

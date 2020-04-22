@@ -5,13 +5,10 @@ import java.nio.FloatBuffer;
 
 import org.lwjgl.BufferUtils;
 
-import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.opengl.GL15.*;
 import static org.lwjgl.opengl.GL20.*;
 
 //GLM can be found at https://mvnrepository.com/artifact/io.github.java-graphics/glm/1.0.1
 import glm.mat._4.Mat4;
-import glm.vec._3.Vec3;
 
 public final class UniformSender {
 

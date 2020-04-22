@@ -1,59 +1,106 @@
 using System;
+using System.Collections.Generic;
+using System.Drawing;
 using SpaceVIL;
 using SpaceVIL.Core;
+using SpaceVIL.Decorations;
 
 namespace OpenGLLayerExample
 {
-    public class MainWindow : ActiveWindow
-    {
-        public override void InitWindow()
-        {
-            SetParameters(this.GetType().Name, this.GetType().Name, 800, 800, false);
-            IsCentered = true;
+   public class MainWindow : ActiveWindow
+   {
+      public override void InitWindow()
+      {
+         SetParameters(this.GetType().Name, this.GetType().Name, 800, 800, false);
+         IsCentered = true;
 
-            TitleBar titleBar = new TitleBar(this.GetType().Name);
+         OneCubeExample();
+         // MultipleCubes();
+      }
 
-            OpenGLLayer ogl = new OpenGLLayer();
-            ogl.SetMargin(0, titleBar.GetHeight(), 0, 0);
+      private void OneCubeExample()
+      {
+         TitleBar titleBar = new TitleBar(this.GetType().Name);
 
-            HorizontalStack toolbar = Items.GetToolbarLayout();
+         OpenGLLayer ogl = new OpenGLLayer();
+         ogl.SetMargin(0, titleBar.GetHeight(), 0, 0);
 
-            ImagedButton btnRotateLeft = Items.GetImagedButton(EmbeddedImage.ArrowUp, -90);
-            ImagedButton btnRotateRight = Items.GetImagedButton(EmbeddedImage.ArrowUp, 90);
+         HorizontalStack toolbar = Items.GetToolbarLayout();
 
-            HorizontalSlider zoom = Items.GetSlider();
+         ImagedButton btnRotateLeft = Items.GetImagedButton(EmbeddedImage.ArrowUp, -90);
+         ImagedButton btnRotateRight = Items.GetImagedButton(EmbeddedImage.ArrowUp, 90);
 
-            ImagedButton btnRestoreView = Items.GetImagedButton(EmbeddedImage.Refresh, 0);
+         HorizontalSlider zoom = Items.GetSlider();
 
-            // adding
-            AddItems(titleBar, ogl);
-            ogl.AddItems(toolbar);
-            toolbar.AddItems(btnRotateLeft, btnRotateRight, zoom, btnRestoreView);
+         ImagedButton btnRestoreView = Items.GetImagedButton(EmbeddedImage.Refresh, 0);
 
-            // assign events
-            btnRestoreView.EventMousePress += (sender, args) =>
+         // adding
+         AddItems(titleBar, ogl);
+         ogl.AddItems(toolbar);
+         toolbar.AddItems(btnRotateLeft, btnRotateRight, zoom, btnRestoreView);
+
+         // assign events
+         btnRestoreView.EventMousePress += (sender, args) =>
+         {
+            ogl.RestoreView();
+         };
+
+         btnRotateLeft.EventMousePress += (sender, args) =>
+         {
+            ogl.Rotate(KeyCode.Left);
+         };
+
+         btnRotateRight.EventMousePress += (sender, args) =>
+         {
+            ogl.Rotate(KeyCode.Right);
+         };
+
+         zoom.EventValueChanged += (sender) =>
+         {
+            ogl.SetZoom(zoom.GetCurrentValue());
+         };
+
+         // Set focus
+         ogl.SetFocus();
+         zoom.SetCurrentValue(3);
+      }
+
+      private void MultipleCubes()
+      {
+         TitleBar titleBar = new TitleBar(this.GetType().Name);
+
+         FreeArea area = new FreeArea();
+         area.SetMargin(0, titleBar.GetHeight(), 0, 0);
+
+         AddItems(titleBar, area);
+
+         List<IBaseItem> content = new List<IBaseItem>();
+
+         for (int row = 0; row < 3; row++)
+         {
+            for (int column = 0; column < 3; column++)
             {
-                ogl.RestoreView();
-            };
+               ResizableItem frame = new ResizableItem();
+               frame.SetBorder(new Border(Color.Gray, new CornerRadius(), 2));
+               frame.SetPadding(5, 5, 5, 5);
+               frame.SetBackground(100, 100, 100);
+               frame.SetSize(200, 200);
+               frame.SetPosition(90 + row * 210, 60 + column * 210);
+               area.AddItem(frame);
+               content.Add(frame);
 
-            btnRotateLeft.EventMousePress += (sender, args) =>
-            {
-                ogl.Rotate(KeyCode.Left);
-            };
+               frame.EventMousePress += (sender, args) =>
+               {
+                  content.Remove(frame);
+                  content.Add(frame);
+                  area.SetContent(content);
+               };
 
-            btnRotateRight.EventMousePress += (sender, args) =>
-            {
-                ogl.Rotate(KeyCode.Right);
-            };
-
-            zoom.EventValueChanged += (sender) =>
-            {
-                ogl.SetZoom(zoom.GetCurrentValue());
-            };
-
-            // Set focus
-            ogl.SetFocus();
-            zoom.SetCurrentValue(3);
-        }
-    }
+               OpenGLLayer ogl = new OpenGLLayer();
+               ogl.SetMargin(0, 30, 0, 0);
+               frame.AddItem(ogl);
+            }
+         }
+      }
+   }
 }

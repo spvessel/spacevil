@@ -3,7 +3,7 @@ package SimpleImageViewerJVM;
 import java.awt.Color;
 
 import com.spvessel.spacevil.*;
-import com.spvessel.spacevil.Decorations.CustomFigure;
+import com.spvessel.spacevil.Decorations.Figure;
 import com.spvessel.spacevil.Flags.*;
 
 public class FullImageViewer extends DialogItem {
@@ -22,7 +22,7 @@ public class FullImageViewer extends DialogItem {
         _image.keepAspectRatio(true);
 
         _close.setSize(30, 30);
-        _close.setCustomFigure(new CustomFigure(false, GraphicsMathService.getCross(30, 30, 3, 45)));
+        _close.setCustomFigure(new Figure(false, GraphicsMathService.getCross(30, 30, 3, 45)));
         _close.setBackground(100, 100, 100);
         _close.setAlignment(ItemAlignment.TOP, ItemAlignment.RIGHT);
         _close.setMargin(0, 10, 10, 0);

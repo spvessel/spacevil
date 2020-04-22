@@ -92,7 +92,7 @@ namespace SubtractFigureEffect
             int yOffset = subtract.GetY() - circle.GetY() - diff;
 
             SubtractFigure effect = new SubtractFigure(
-                    new CustomFigure(false, GraphicsMathService.GetEllipse(diameter, diameter, 0, 0, 64)));
+                    new Figure(false, GraphicsMathService.GetEllipse(diameter, diameter, 0, 0, 64)));
             effect.SetAlignment(ItemAlignment.VCenter, ItemAlignment.HCenter);
             effect.SetSizeScale(scale, scale);
             effect.SetPositionOffset(xOffset, yOffset);
@@ -105,7 +105,7 @@ namespace SubtractFigureEffect
             float scale = 0.4f;
             int diameter = (int)(circle.GetHeight() * scale);
             SubtractFigure effect = new SubtractFigure(
-                    new CustomFigure(true, GraphicsMathService.GetEllipse(diameter, diameter, 0, 0, 64)));
+                    new Figure(true, GraphicsMathService.GetEllipse(diameter, diameter, 0, 0, 64)));
             effect.SetAlignment(ItemAlignment.VCenter, ItemAlignment.HCenter);
             return effect;
         }

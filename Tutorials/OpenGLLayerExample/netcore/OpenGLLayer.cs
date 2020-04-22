@@ -71,7 +71,7 @@ namespace OpenGLLayerExample
             };
         }
 
-        private Pointer _ptr = new Pointer();
+        private Position _ptr = new Position();
         // shaders
         private uint _shaderCommon = 0;
         private uint _shaderLamp = 0;
@@ -249,19 +249,19 @@ namespace OpenGLLayerExample
         {
             if (code == KeyCode.Left)
             {
-                _model = glm.rotate(_model, glm.radians(1), new vec3(0.0f, 1.0f, 0.0f));
+                _model = glm.rotate(_model, glm.radians(20), new vec3(0.0f, 1.0f, 0.0f));
             }
             if (code == KeyCode.Right)
             {
-                _model = glm.rotate(_model, glm.radians(-1), new vec3(0.0f, 1.0f, 0.0f));
+                _model = glm.rotate(_model, glm.radians(-20), new vec3(0.0f, 1.0f, 0.0f));
             }
             if (code == KeyCode.Up)
             {
-                _model = glm.rotate(_model, glm.radians(1), new vec3(1.0f, 0.0f, 0.0f));
+                _model = glm.rotate(_model, glm.radians(20), new vec3(1.0f, 0.0f, 0.0f));
             }
             if (code == KeyCode.Down)
             {
-                _model = glm.rotate(_model, glm.radians(-1), new vec3(1.0f, 0.0f, 0.0f));
+                _model = glm.rotate(_model, glm.radians(-20), new vec3(1.0f, 0.0f, 0.0f));
             }
         }
 

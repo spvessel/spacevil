@@ -13,7 +13,7 @@ import com.spvessel.spacevil.Decorations.CornerRadius;
 import com.spvessel.spacevil.Decorations.ItemState;
 import com.spvessel.spacevil.Decorations.Style;
 import com.spvessel.spacevil.Flags.*;
-import com.spvessel.spacevil.OpenEntryDialog.OpenDialogType;
+import com.spvessel.spacevil.Flags.OpenDialogType;
 
 public class AlbumSideList extends SideArea {
     private boolean _isInit = false;
@@ -48,8 +48,8 @@ public class AlbumSideList extends SideArea {
         _name.setHeight(70);
 
         _albumList.setSelectionVisible(false);
-        _albumList.setVScrollBarVisible(ScrollBarVisibility.AS_NEEDED);
-        _albumList.setHScrollBarVisible(ScrollBarVisibility.NEVER);
+        _albumList.setVScrollBarPolicy(VisibilityPolicy.AS_NEEDED);
+        _albumList.setHScrollBarPolicy(VisibilityPolicy.NEVER);
         _albumList.setBackground(new Color(0, 0, 0, 0));
         _albumList.setMargin(10, 100, 10, 50);
         _albumList.vScrollBar.setStyle(Style.getSimpleVerticalScrollBarStyle());

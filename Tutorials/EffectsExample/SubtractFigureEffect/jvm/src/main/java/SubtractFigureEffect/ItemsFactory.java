@@ -12,7 +12,7 @@ import com.spvessel.spacevil.Label;
 import com.spvessel.spacevil.Common.DefaultsService;
 import com.spvessel.spacevil.Core.InterfaceBaseItem;
 import com.spvessel.spacevil.Core.InterfaceEffect;
-import com.spvessel.spacevil.Decorations.CustomFigure;
+import com.spvessel.spacevil.Decorations.Figure;
 import com.spvessel.spacevil.Decorations.SubtractFigure;
 import com.spvessel.spacevil.Flags.ItemAlignment;
 
@@ -89,7 +89,7 @@ public final class ItemsFactory {
         int yOffset = subtract.getY() - circle.getY() - diff;
 
         SubtractFigure effect = new SubtractFigure(
-                new CustomFigure(false, GraphicsMathService.getEllipse(diameter, diameter, 0, 0, 64)));
+                new Figure(false, GraphicsMathService.getEllipse(diameter, diameter, 0, 0, 64)));
         effect.setAlignment(ItemAlignment.VCENTER, ItemAlignment.HCENTER);
         effect.setSizeScale(scale, scale);
         effect.setPositionOffset(xOffset, yOffset);
@@ -101,7 +101,7 @@ public final class ItemsFactory {
         float scale = 0.4f;
         int diameter = (int) (circle.getHeight() * scale);
         SubtractFigure effect = new SubtractFigure(
-                new CustomFigure(true, GraphicsMathService.getEllipse(diameter, diameter, 0, 0, 64)));
+                new Figure(true, GraphicsMathService.getEllipse(diameter, diameter, 0, 0, 64)));
         effect.setAlignment(ItemAlignment.VCENTER, ItemAlignment.HCENTER);
         return effect;
     }

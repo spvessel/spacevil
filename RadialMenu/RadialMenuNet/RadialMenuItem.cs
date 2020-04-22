@@ -56,7 +56,7 @@ namespace RadialMenu
             };
             EventKeyPress += (sender, args) =>
             {
-                if (args.Key == KeyCode.Menu)
+                if (args.Key == KeyCode.Escape)
                     Hide();
             };
             EventMousePress += OnMousePress;
@@ -167,7 +167,7 @@ namespace RadialMenu
         public void Hide()
         {
             SetVisible(false);
-            GetHandler().SetFocus();
+            GetHandler().ResetFocus();
         }
         
         public void Hide(MouseArgs args)
@@ -225,7 +225,7 @@ namespace RadialMenu
 
         private void RearrangeContacts()
         {
-            Pointer centerPoint = GetCenter();
+            Position centerPoint = GetCenter();
             _alpha += _degreeDiff;
 
             foreach (var item in _contacts)
@@ -238,9 +238,9 @@ namespace RadialMenu
             }
         }
 
-        private double CalculateDegreeByPos(Pointer position)
+        private double CalculateDegreeByPos(Position position)
         {
-            Pointer centerPoint = GetCenter();
+            Position centerPoint = GetCenter();
             double degree = Math.Atan2(position.GetY() - centerPoint.GetY(), position.GetX() - centerPoint.GetX());
             if (degree < 0)
                 degree += _doubledPI;
@@ -252,9 +252,9 @@ namespace RadialMenu
             _alphaStep = _doubledPI / _contacts.Count;
         }
 
-        private Pointer GetCenter()
+        private Position GetCenter()
         {
-            Pointer center = new Pointer();
+            Position center = new Position();
             int xCenter = HideButton.GetWidth() / 2 + HideButton.GetX();
             int yCenter = HideButton.GetHeight() / 2 + HideButton.GetY();
             center.SetPosition(xCenter, yCenter);

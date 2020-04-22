@@ -1,10 +1,9 @@
 using System;
 using System.Drawing;
 using SpaceVIL.Common;
-using SpaceVIL.Decorations;
 using SpaceVIL.Core;
 using SpaceVIL;
-using System.IO;
+using SpaceVIL.Decorations;
 
 namespace SimpleImageViewer
 {
@@ -65,7 +64,7 @@ namespace SimpleImageViewer
             Name.SetFontStyle(FontStyle.Bold);
 
             _remove.SetSize(12, 12);
-            _remove.SetCustomFigure(new CustomFigure(false, GraphicsMathService.GetCross(12, 12, 3, 45)));
+            _remove.SetCustomFigure(new Figure(false, GraphicsMathService.GetCross(12, 12, 3, 45)));
             _remove.SetBackground(100, 100, 100);
             _remove.SetAlignment(ItemAlignment.VCenter, ItemAlignment.Left);
             _remove.SetMargin(0, 0, 5, 0);

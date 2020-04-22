@@ -5,11 +5,6 @@ using SpaceVIL.Core;
 using SpaceVIL.Common;
 using SpaceVIL.Decorations;
 using System.IO;
-using System.Diagnostics;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Linq;
 using System.Reflection;
 
 namespace SimpleImageViewer
@@ -186,7 +181,7 @@ namespace SimpleImageViewer
             {
                 Model.FillImageArea(this, imageArea, previewArea, 
                     Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + Path.DirectorySeparatorChar + "Pictures");
-            }
+            };
         }
     }
 }

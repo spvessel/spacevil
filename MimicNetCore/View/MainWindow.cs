@@ -129,8 +129,8 @@ namespace MimicSpace
             contacts_bar = new ListBox();
             contacts_bar.SetPadding(8, 8, 8, 8);
             contacts_bar.SetBackground(Color.Transparent);
-            contacts_bar.SetHScrollBarVisible(ScrollBarVisibility.Never);
-            contacts_bar.SetVScrollBarVisible(ScrollBarVisibility.Never);
+            contacts_bar.SetHScrollBarPolicy(VisibilityPolicy.Never);
+            contacts_bar.SetVScrollBarPolicy(VisibilityPolicy.Never);
             contacts_bar.SetSelectionVisible(false);
 
             Frame user_bar = new Frame();
@@ -176,7 +176,7 @@ namespace MimicSpace
             conversation = new ListBox();
             conversation.SetPadding(4, 4, 4, 4);
             conversation.SetBackground(Color.Transparent);
-            conversation.SetHScrollBarVisible(ScrollBarVisibility.Never);
+            conversation.SetHScrollBarPolicy(VisibilityPolicy.Never);
             conversation.GetArea().SetPadding(16, 10, 2, 2);
             conversation.SetSelectionVisible(false);
 

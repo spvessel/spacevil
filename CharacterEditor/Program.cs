@@ -6,6 +6,7 @@ namespace CharacterEditor
     {
         static void Main(string[] args)
         {
+            Console.WriteLine(SpaceVIL.Common.CommonService.GetSpaceVILInfo());
             if (!SpaceVIL.Common.CommonService.InitSpaceVILComponents())
                 return;
 

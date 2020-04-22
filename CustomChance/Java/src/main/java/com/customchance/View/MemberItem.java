@@ -5,7 +5,7 @@ import java.awt.Font;
 
 import com.customchance.Model.CommonLogic;
 
-import com.spvessel.spacevil.Decorations.CustomFigure;
+import com.spvessel.spacevil.Decorations.Figure;
 import com.spvessel.spacevil.Decorations.ItemState;
 import com.spvessel.spacevil.GraphicsMathService;
 import com.spvessel.spacevil.Flags.ItemAlignment;
@@ -81,7 +81,7 @@ class MemberItem extends Prototype {
         memberRemove.setSize(14, 14);
         memberRemove.setSizePolicy(SizePolicy.FIXED, SizePolicy.FIXED);
         memberRemove.setAlignment(ItemAlignment.VCENTER, ItemAlignment.LEFT);
-        memberRemove.setCustomFigure(new CustomFigure(false, GraphicsMathService.getCross(14, 14, 5, 45)));
+        memberRemove.setCustomFigure(new Figure(false, GraphicsMathService.getCross(14, 14, 5, 45)));
         memberRemove.addItemState(ItemStateType.HOVERED, new ItemState(new Color(255, 255, 255, 125)));
         memberRemove.eventMouseClick.add((sender, args) -> disposeSelf());
 

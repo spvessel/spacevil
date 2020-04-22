@@ -73,7 +73,7 @@ namespace MimicSpace
             vs.Slider.Handler.SetMargin(new Indents(5, 0, 5, 0));
 
             _text.SetBorderRadius(new CornerRadius(3));
-            _text.SetHScrollBarVisible(ScrollBarVisibility.Never);
+            _text.SetHScrollBarPolicy(VisibilityPolicy.Never);
             _text.SetHeight(25);
             _text.SetAlignment(ItemAlignment.Left | ItemAlignment.Bottom);
             _text.SetBackground(151, 203, 255);
@@ -98,7 +98,7 @@ namespace MimicSpace
             {
                 Background = Color.FromArgb(125, 255, 255, 255)
             });
-            _btn_close.SetCustomFigure(new CustomFigure(false, GraphicsMathService.GetCross(10, 10, 3, 45)));
+            _btn_close.SetCustomFigure(new Figure(false, GraphicsMathService.GetCross(10, 10, 3, 45)));
             _btn_close.EventMouseClick += (sender, args) =>
             {
                 Dispose();

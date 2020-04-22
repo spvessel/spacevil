@@ -1,10 +1,7 @@
-using System;
 using System.Drawing;
-using SpaceVIL.Common;
-using SpaceVIL.Decorations;
 using SpaceVIL.Core;
 using SpaceVIL;
-using System.IO;
+using SpaceVIL.Decorations;
 
 namespace SimpleImageViewer
 {
@@ -22,15 +19,15 @@ namespace SimpleImageViewer
             base.InitElements();
             SetBackground(0, 0, 0, 200);
             
-            Window.IsWResizable = false;
-            Window.IsHResizable = false;
+            Window.IsXResizable = false;
+            Window.IsYResizable = false;
             Window.IsXFloating = false;
             Window.IsYFloating = false;
 
             _image.KeepAspectRatio(true);
 
             _close.SetSize(30, 30);
-            _close.SetCustomFigure(new CustomFigure(false, GraphicsMathService.GetCross(30, 30, 3, 45)));
+            _close.SetCustomFigure(new Figure(false, GraphicsMathService.GetCross(30, 30, 3, 45)));
             _close.SetBackground(100, 100, 100);
             _close.SetAlignment(ItemAlignment.Top, ItemAlignment.Right);
             _close.SetMargin(0, 10, 10, 0);

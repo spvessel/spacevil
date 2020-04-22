@@ -82,7 +82,7 @@ namespace CustomChance
             MemberRemove.SetSizePolicy(SizePolicy.Fixed, SizePolicy.Fixed);
             MemberRemove.SetAlignment(ItemAlignment.VCenter | ItemAlignment.Left);
             MemberRemove.AddItemState(ItemStateType.Hovered, new ItemState(Color.FromArgb(125, 255, 255, 255)));
-            MemberRemove.SetCustomFigure(new CustomFigure(false, GraphicsMathService.GetCross(14, 14, 5, 45)));
+            MemberRemove.SetCustomFigure(new Figure(false, GraphicsMathService.GetCross(14, 14, 5, 45)));
             MemberRemove.EventMouseClick += (sender, args) => DisposeSelf();
 
             //Adding
